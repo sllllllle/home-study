@@ -29,9 +29,12 @@
                 <%= f.password_field :password, class: 'form-control' %>
               </div>
           
-              <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
-              <%= f.submit '簡単ログイン', class: 'btn btn-primary btn-block' %>
+              <%= f.submit "ログイン", class: 'btn btn-primary btn-block' %>
             <% end %>
+            <div class="form-group">
+              <%= link_to "'sue'としてログイン", login_as_sue_path, method: :post, class: 'btn btn-primary btn-block' %>
+              <%= link_to "'taro'としてログイン", login_as_taro_path, method: :post, class: 'btn btn-primary btn-block' %>
+            </div>
           </div>
         </div>
       </div>

@@ -31,4 +31,9 @@ class SessionsController < ApplicationController
       return false
     end
   end
+  
+  # def guest_login(email, password)
+  #   @user = User.find_by(email: email)
+  #   session[:user_id] = user.id
+  # end
 end

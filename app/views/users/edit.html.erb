@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center main-block">
+    <div class="row white-block">
+      <div class="col lg-block text-center">
+        <h1>ユーザー設定</h1>
+        <div>
+          <%= form_with(model: @user, local: true) do |f| %>
+            <di>
+              <%= f.label :name, 'ユーザー名' %>
+              <%= f.text_field :name %>
+            </div>
+            <div>
+              <%= f.label :email, 'メールアドレス' %>
+              <%= f.email_field :email %>
+            </div>
+            <div>
+              <%= f.label :age, '年代' %>
+              <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
+            </div>
+            <div>
+              <%= f.check_box :display_gender %>
+              <%= f.label :display_gender, "性別を非公開にする" %>
+            </div>
+            <div>
+              <%= f.check_box :display_age %>
+              <%= f.label :display_age, "年代を非公開にする" %>
+            </div>
+            <div>
+              <%= f.check_box :display_records %>
+              <%= f.label :display_records, "勉強履歴を非公開にする" %>
+            </div>
+            <%= f.submit '更新' %>
+          <% end %>
+          <%= link_to "戻る", user_path(@user) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

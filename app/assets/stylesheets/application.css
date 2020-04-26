@@ -1,15 +1,79 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+ /** This is a manifest file that'll be compiled into application.css, which will include all the files*/
+ /** listed below.*/
+ /***/
+ /** Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's*/
+ /** vendor/assets/stylesheets directory can be referenced here using a relative path.*/
+ /***/
+ /** You're free to add application-wide styles to this file and they'll appear at the bottom of the*/
+ /** compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS*/
+ /** files in this directory. Styles in this file should be added after the last require_* statement.*/
+ /** It is generally better to create a new file per style scope.*/
+ /***/
+ /**= require_tree .*/
+ /**= require_self*/
+ 
+
+/*body {*/
+/*  margin: 0;*/
+  
+/*}*/
+
+/*header {*/
+/*  background-color: #F2FBF9;*/
+/*  width: 100%;*/
+/*  height: 80px;*/
+/*}*/
+
+/*header img {*/
+/*  width: 60px;*/
+/*  height: 60px;*/
+/*}*/
+
+
+/*.header-menu {*/
+/*  margin-left: auto;*/
+/*  margin-right: 60px;*/
+/*}*/
+
+
+main {
+  background-color: #89E2D7;
+  width: 100%;
+  height: 785px;
+}
+
+.main-block {
+  height: 785px;
+}
+
+.hello h1 {
+  font-weight: bold;
+}
+
+.white-block {
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  border-radius: 30px;
+}
+
+.lg-block {
+  height: 500px;
+  width: 600px;
+}
+
+.login-block {
+  height: 500px;
+  width: 300px;
+}
+
+
+
+/*footer {*/
+/*  background-color: #F2FBF9;*/
+/*  width: 100%;*/
+/*  height: 80px;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/

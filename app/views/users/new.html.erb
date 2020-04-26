@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center main-block">
+    <div class="row white-block">
+      <div class="col lg-block text-center">
+        <h1>会員登録</h1>
+        <div>
+          <%= form_with(model: @user, local: true) do |f| %>
+            <div>
+              <%= f.label :name, 'ユーザー名' %>
+              <%= f.text_field :name %>
+            </div>
+            <div>
+              <%= f.label :email, 'メールアドレス' %>
+              <%= f.email_field :email %>
+            </div>
+            <div>
+              <%= f.label :password, 'パスワード' %>
+              <%= f.password_field :password %>
+            </div>
+            <div>
+              <%= f.label :password_confirmation, '確認用のパスワード' %>
+              <%= f.password_field :password_confirmation %>
+            </div>
+            <!--<div>-->
+            <!--  <%= f.label :gender, "男" %>-->
+            <!--  <%= f.radio_button :gender, 1 %>-->
+            <!--  <%= f.label :gender, "女" %>-->
+            <!--  <%= f.radio_button :gender, 2 %>-->
+            <!--  <%= f.label :gender, :other %>-->
+            <!--  <%= f.radio_button :gender, 3 %>-->
+            <!--</div>-->
+            <!--'3' is not a valid genderというエラーが出て保存できないので一旦コメントアウト-->
+            <div>
+              <%= f.label :age, '年代' %>
+              <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
+            </div>
+            <%= f.submit '登録' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

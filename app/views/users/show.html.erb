@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center main-block">
+    <div class="row white-block">
+      <div class="col lg-block text-center">
+        <h1>ユーザー詳細</h1>
+        <div>
+          <h3><%= @user.name %></h3>
+          <p><%= @user.email %></p>
+          <p><%= @user.gender %>
+          <p><%= @user.age %>代</p>
+        </div>
+        <%= link_to "ユーザー設定", edit_user_path(@user) %>
+      </div>
+    </div>
+  </div>
+</div>

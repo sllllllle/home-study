@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="d-flex justify-content-center align-items-center main-block">
+    <div class=" white-block text-center">
+      <h1>タイムライン</h1>
+      <div class="row lg-block">
+        <aside class="col-md-4">
+          <%= form_with(model: @micropost, local: true) do |f| %>
+            <div class="form-group">
+              <%= f.text_area :content, class: "form-control", rows: 5 %>
+            </div>
+            <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+          <% end %>
+        </aside>
+        <div class="col-md-8">
+          <%= render "microposts/microposts", microposts: @microposts %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

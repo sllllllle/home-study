@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  get 'signup', to: 'users#new'
+  get "signup", to: "users#new"
   resources :users, only: [:index, :show, :new, :edit, :create, :update]
+  
+  resources :microposts, only: [:index, :create, :destroy]
 end

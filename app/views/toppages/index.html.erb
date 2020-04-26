@@ -1,8 +1,15 @@
 <div class="container">
-  <% if logged_in? %>
-    <h3>welcome to homusuta!</h3>
-  <% else %>
-    <div class="d-flex justify-content-center align-items-center main-block">
+  <div class="d-flex justify-content-center align-items-center main-block">
+    <% if logged_in? %>
+      <div class="white-block">
+        <div class="row">
+          <div class="col lg-block text-center">
+            <h3>welcome to homusuta!</h3>
+            <p>ログイン中のユーザー: <%= current_user.name %></p>
+          </div>
+        </div>
+      </div>
+    <% else %>
       <div class="row">
         <div class="col-md-6 hello">
           <h1>みんなと一緒に<br>勉強しましょう！</h1>
@@ -28,6 +35,6 @@
           </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

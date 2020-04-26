@@ -1,0 +1,17 @@
+<ul>
+  <% microposts.each do |micropost| %>
+    <li>
+      <div>
+        <%= link_to micropost.user.name, user_path(micropost.user) %> | posted_at <%= micropost.created_at %>
+      </div>
+      <div>
+        <p><%= micropost.content %></p>
+      </div>
+      <p>
+        <% if current_user == micropost.user %>
+          <%= link_to "削除", micropost, mehod: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <% end %>
+      </p>
+    </li>
+  <% end %>
+</ul>

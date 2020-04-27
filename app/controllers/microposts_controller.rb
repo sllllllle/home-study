@@ -1,5 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
+  
   include SessionsHelper
   
   def index

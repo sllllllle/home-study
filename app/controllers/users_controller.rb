@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
   
   def show
+    @microposts = @user.microposts.order(id: :desc)
+    # counts(@user)
   end
 
   def new
@@ -13,7 +15,6 @@ class UsersController < ApplicationController
 
   def create
    @user = User.new(user_create)
-
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
       redirect_to @user
@@ -24,14 +25,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    
-    if @user.update(user_update)
+    @user.assign_attributes(user_update)
+    if @user.save
       flash[:success] = 'ユーザー情報を更新しました。'
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザー情報を更新できませんでした'
       render :edit
     end
+  end
+  
+  def followings
+    @followings = @user.followings
+    # counts(@user)
+  end
+  
+  def followers
+    @followers = @user.followers
+    # counts(@user)
   end
   
   private

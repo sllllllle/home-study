@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   post 'login_as_taro', to: 'guest_sessions#taro'
   
   get "signup", to: "users#new"
-  resources :users, only: [:index, :show, :new, :edit, :create, :update]
+  resources :users, only: [:index, :show, :new, :edit, :create, :update] do
+    member do 
+      get :followings
+      get :followers
+    end
+  end
   
   resources :microposts, only: [:index, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 end

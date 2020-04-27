@@ -22,15 +22,16 @@
   </head>
 
   <body>
-    <%= render 'layouts/flash_messages' %>
-    
     <header>
-      
       <%= render "toppages/header" %>
     </header>
-    
     <main>
-      <%= yield %>
+      <%= render 'layouts/flash_messages' %>
+      <div class="container">
+        <div class="d-flex justify-content-center align-items-center main-block">
+          <%= yield %>
+        </di>
+      </div>
     </main>
     
     <footer>

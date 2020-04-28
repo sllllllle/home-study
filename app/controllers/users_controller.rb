@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :following_posts]
+  
   
   def show
     @microposts = @user.microposts.order(id: :desc)
@@ -25,8 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.assign_attributes(user_update)
-    if @user.save
+    if @user.update_attributes(user_update)
       flash[:success] = 'ユーザー情報を更新しました。'
       redirect_to @user
     else
@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     @followers = @user.followers
     # counts(@user)
   end
+  
+  # def following_posts
+  #   @microposts = @user.feed_micropost.sorder(id: :desc)
+  # end
   
   private
   

@@ -9,7 +9,7 @@
       </div>
       <p>
         <% if current_user == micropost.user %>
-          <%= link_to "削除", micropost, mehod: :delete, data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
         <% end %>
       </p>
     </li>

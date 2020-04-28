@@ -1,7 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :correct_user, only: [:destroy]
   
-  include SessionsHelper
   
   def index
     if logged_in?
@@ -24,8 +23,12 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "削除しました"
-    redirect_back(flash_location: root_path)
+    flash[:success] = '削除しました'
+    redirect_back(fallback_location: root_path)
+  end
+  
+  def following_posts
+    @microposts = current_user.feed_microposts.order(id: :desc)
   end
   
   private

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :following_posts]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes]
   
   
   def show
@@ -45,10 +45,9 @@ class UsersController < ApplicationController
     # counts(@user)
   end
   
-  # def following_posts
-  #   @microposts = @user.feed_micropost.sorder(id: :desc)
-  # end
-  
+  def likes
+    @microposts = @user.favorite_microposts.order(id: :desc)
+  end
   private
   
   def user_update

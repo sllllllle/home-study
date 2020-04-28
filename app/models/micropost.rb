@@ -6,7 +6,4 @@ class Micropost < ApplicationRecord
   
   validates :content, presence: true, length: { maximum: 140 }
   
-  def feed_microposts
-    Micropost.where(user_id: self.following_ids + [self.id])
-  end
 end

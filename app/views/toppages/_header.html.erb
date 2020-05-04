@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <a href="#" class="navbar-brand"></a>
-      
+<nav class="navbar navbar-expand-sm navbar-light">
+  <div class="header-icon">
+    <a href="#" class="navbar-brand"><%= image_tag asset_path("icon.png") %></a>
+  </div>
+  
   <div class="header-menu">
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar" >
         <span class="navbar-toggler-icon"></span>
@@ -10,7 +12,7 @@
             <li><%= link_to "勉強している人", root_path, class: "nav-link" %></li>
             
             <% if logged_in? %>
-            
+              <li><%= link_to "勉強をはじめる", start_path, class: "nav-link" %></li>
               <li><%= link_to "タイムライン", microposts_path, class: "nav-link" %></li>
               <li><%= link_to "マイページ", user_path(current_user), class: "nav-link" %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %></li>

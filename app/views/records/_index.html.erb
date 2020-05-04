@@ -1,0 +1,20 @@
+<div class="white-block">
+  <div class="large-block">
+    <h1>勉強している人</h1>
+    <ul>
+      <% records.each do |record| %>
+        <li>
+          <% if record.user.profile_image.attached? %>
+            <%= image_tag record.user.profile_image.variant(resize: "128x123" ) %>
+          <% end %>
+          <p>ID: <%= record.id %></p>
+          <p>名前: <%= record.user.name %></p>
+          <p>性別: <%= record.user.gender %></p>
+          <p>年代: <%= record.user.age %>代</p>
+          <p>ラベル: <%= record.label %></p>
+          <p>finished: <%= record.finished %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>  

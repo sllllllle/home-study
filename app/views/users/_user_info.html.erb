@@ -1,0 +1,26 @@
+<h1>ユーザー詳細</h1>
+<div>
+  <% if user.profile_image.attached? %>
+    <%= image_tag user.profile_image.variant(resize: "128x123" ) %>
+  <% end %>
+</div>
+<div>
+  <h3><%= user.name %></h3>
+  <p>ID: <%= user.id %></p>
+  <p>メールアドレス: <%= user.email %></p>
+  <% if user.display_gender == true %>
+    <p>性別: 非公開 %>
+  <% else %>
+    <p>性別: <%= user.gender %>
+  <% end %>
+  <% if user.display_age == true %>
+    <p>年代: 非公開</p>
+  <% else %>
+    <p>年代: <%= user.age %>代</p>
+  <% end %>
+  <p>性別非公開: <%= user.display_gender %></p>
+  <p>年代非公開: <%= user.display_age %></p>
+  <p>勉強履歴非公開: <%= user.display_records %></p>
+</div>
+<div>
+<%= render 'relationships/follow_button', user: @user %>

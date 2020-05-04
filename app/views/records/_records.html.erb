@@ -1,0 +1,12 @@
+<ul>
+  <% records.each do |record| %>
+    <li>
+      <% if record.user.profile_image.attached? %>
+        <%= image_tag record.user.profile_image.variant(resize: "128x123" ) %>
+      <% end %>
+      <p>ID: <%= record.id %></p>
+      <p>ラベル: <%= record.label %></p>
+      <p><%= record.created_at.strftime('%Y/%m/%d') %></p>
+    </li>
+  <% end %>
+</ul>

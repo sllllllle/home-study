@@ -13,7 +13,7 @@
         <li class="nav-item"><%= link_to "いいね一覧", likes_user_path(@user) %></li>
         <li class="nav-item"><%= link_to "勉強履歴", records_user_path(@user)  %></li>
       </ul>
-      <%= render "microposts/microposts", microposts: @microposts %>
+      <%= render "records/records", records: @records %>
     </div>
   </div>
 </div>

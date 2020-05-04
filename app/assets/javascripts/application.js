@@ -14,3 +14,26 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+'use strict';
+
+{
+  const timer = document.getElementById("timer");
+  const start = document.getElementById("start");
+  const stop = document.getElementById("stop");
+  const reset = document.getElementById("reset");
+
+  let startTime;
+
+  function countUp() {
+    console.log(Date.now() - startTime);
+    setTimeout(() => {
+      countUp();
+    }, 1000);
+  }
+
+  start.addEventListener("click", () => {
+    startTime = Date.now();
+    countUp();
+  });
+}

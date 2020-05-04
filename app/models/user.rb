@@ -3,10 +3,16 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  enum gender: { man: 1, woman: 2, other: 3}
+                    
+  enum gender: { "man": 1, "woman": 2, "other": 3}
+  
   has_secure_password
   
+  has_one_attached :profile_image
+  
   has_many :microposts
+  has_many :records
+  
   
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
@@ -51,5 +57,7 @@ class User < ApplicationRecord
   def favorite_microposts
     Micropost.where(id: self.favorite_post_ids)
   end
+  
+  
   
 end

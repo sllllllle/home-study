@@ -21,18 +21,16 @@
             <%= f.label :password_confirmation, '確認用のパスワード' %>
             <%= f.password_field :password_confirmation %>
           </div>
-          <!--<div>-->
-          <!--  <%= f.label :gender, "男" %>-->
-          <!--  <%= f.radio_button :gender, 1 %>-->
-          <!--  <%= f.label :gender, "女" %>-->
-          <!--  <%= f.radio_button :gender, 2 %>-->
-          <!--  <%= f.label :gender, :other %>-->
-          <!--  <%= f.radio_button :gender, 3 %>-->
-          <!--</div>-->
-          <!--'3' is not a valid genderというエラーが出て保存できないので一旦コメントアウト-->
+          <div>
+            <%= f.select :gender, { "man": 1, "woman": 2, 'other': 3 }, { selected: 1 } %>
+          </div>
           <div>
             <%= f.label :age, '年代' %>
             <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
+          </div>
+          <div>
+            <%= f.label :profile_image, 'プロフィール画像' %>
+            <%= f.file_field :profile_image %>
           </div>
           <%= f.submit '登録' %>
         <% end %>

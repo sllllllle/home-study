@@ -1,0 +1,15 @@
+<div class="white-block">
+  <div class="row">
+    <div class="col lg-block text-center">
+      <div>
+        <h1>勉強終了</h1>
+        <div>
+          <p><%= @record.id %></p>
+          <p>おつかれさまです！</p>
+          <p><%= Time.at(@record.stop_time.to_f - @record.start_time.to_f).utc.strftime('%X') %></p>
+        </div>
+        <%= link_to 'ホーム', root_path %>
+      </div>
+    </div>
+  </div>
+</div>

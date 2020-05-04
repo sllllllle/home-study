@@ -9,11 +9,17 @@ Rails.application.routes.draw do
   post 'login_as_taro', to: 'guest_sessions#taro'
   
   get "signup", to: "users#new"
+  
+  get "start", to: "records#new"
+  # get "stop", to: "record#update"
+  # get "finish", to: "record#finish"
+  
   resources :users, only: [:index, :show, :new, :edit, :create, :update] do
     member do 
       get :followings
       get :followers
       get :likes
+      get :records
     end
   end
   
@@ -22,6 +28,14 @@ Rails.application.routes.draw do
       get :following_posts
     end
   end
+  
+  resources :records, only: [:show, :new, :edit, :create, :update] do
+    member do
+      get :finish
+      get :result
+    end
+  end
+  
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
 end

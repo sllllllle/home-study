@@ -1,0 +1,23 @@
+<div class="white-block">
+  <div class="row">
+    <div class="col lg-block text-center">
+      <div>
+        <h1>勉強画面（仮）</h1>
+        <div>
+          <p><%= @record.id %></p>
+          <p><%= @record.user.name %></p>
+          <p><%= @record.label %></p>
+          <p>開始: <%= @record.start_time %></p>
+          <p>停止: <%= @record.stop_time %></p>
+          <p>エール非公開: <%= @record.display_support %></p>
+          <p>時間非計測: <%= @record.null_timer %></p>
+          <div class="timer">00:00</div>
+          <button id="start">▶</button>
+          <button id="stop">●</button>
+          <%= link_to "一時停止", record_path(@record), method: :put %>
+          <%= link_to "終了", finish_record_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

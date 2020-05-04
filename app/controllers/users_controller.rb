@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes]
-  
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :records]
+  before_action :require_user_logged_in, only: [:show]
   
   def show
     @microposts = @user.microposts.order(id: :desc)
@@ -48,14 +48,18 @@ class UsersController < ApplicationController
   def likes
     @microposts = @user.favorite_microposts.order(id: :desc)
   end
+  
+  def records
+    @records = @user.records.where(finished: true).order(id: :desc)
+  end
   private
   
   def user_update
-    params.require(:user).permit(:name, :email, :age, :display_gender, :display_age, :display_records)
+    params.require(:user).permit(:name, :email, :gender, :age, :display_gender, :display_age, :display_records)
   end
   
   def user_create
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :age)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :age, :profile_image)
   end
   
   def set_user

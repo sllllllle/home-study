@@ -1,0 +1,32 @@
+<div class="white-block">
+  <div class="row">
+    <div class="col lg-block text-center">
+      <h1>勉強をはじめる</h1>
+      <div>
+        <%= form_with(model: @record, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+          <div>
+            <%= f.label :label, "自由入力欄" %>
+            <%= f.text_area :label %>
+          </div>
+          <div>
+            <%= f.check_box :display_support %>
+            <%= f.label :display_support, "エールを表示しない" %>
+            <!--あとでチェックボックスがtrueかfalseの値を送信できるようにする-->
+          </div>
+          <div>
+            <%= f.check_box :null_timer %>
+            <%= f.label :null_timer, "時間を計測しない" %>
+          </div>
+          <div>
+            <%= f.hidden_field :start_time, value: Time.now %>
+          </div>
+          <div>
+            <%= f.hidden_field :finished, value: "false" %>
+          </div>
+          <%= f.submit '開始' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

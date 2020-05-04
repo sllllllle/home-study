@@ -2,8 +2,7 @@
   <div class="white-block">
     <div class="row">
       <div class="col large-block text-center">
-        <h1>welcome to homusuta!</h1>
-        <p>ログイン中のユーザー: <%= current_user.name %></p>
+        <%= render "records/index", records: @records %>
       </div>
     </div>
   </div>

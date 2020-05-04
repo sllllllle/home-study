@@ -5,13 +5,16 @@
       <div>
         <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-          <di>
+          <div>
             <%= f.label :name, 'ユーザー名' %>
             <%= f.text_field :name %>
           </div>
           <div>
             <%= f.label :email, 'メールアドレス' %>
             <%= f.email_field :email %>
+          </div>
+          <div>
+            <%= f.select :gender, [['男', 1], ['女', 2], ['その他', 3]], { selected: 1 } %>
           </div>
           <div>
             <%= f.label :age, '年代' %>

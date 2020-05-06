@@ -7,13 +7,15 @@
       <%= link_to "フォロワー一覧", followers_user_path(@user) %>
     </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 scroll">
       <ul class="nav nav-tabs nav-justified">
         <li class="nav-item"><%= link_to "投稿一覧", user_path(@user) %></li>
         <li class="nav-item"><%= link_to "いいね一覧", likes_user_path(@user) %></li>
         <li class="nav-item"><%= link_to "勉強履歴", records_user_path(@user)  %></li>
       </ul>
-      <%= render "records/records", records: @records %>
+      <div class="scroll">
+        <%= render "records/records", records: @records %>
+      </div>
     </div>
   </div>
 </div>

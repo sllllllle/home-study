@@ -13,6 +13,7 @@
           <p>年代: <%= record.user.age %>代</p>
           <p>ラベル: <%= record.label %></p>
           <p>finished: <%= record.finished %></p>
+          <p>経過時間: <%= record.elapsed_time.to_f %></p>
         </li>
       <% end %>
     </ul>

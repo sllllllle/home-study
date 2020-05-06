@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :set_record, only: [:show, :edit, :update, :finish, :result]
-  before_action :finish_validate, only: [:show]
+  before_action :show_validate, only: [:show]
   before_action :create_validate, only: [:create]
   
   def show
@@ -15,6 +15,9 @@ class RecordsController < ApplicationController
   
   def create
     @record = current_user.records.build(record_create)
+    @record.start_time = Time.zone.now
+    @record.elapsed_time = 0
+    @record.finished = false
     if @record.save
       flash[:success] = "開始しました"
       redirect_to @record
@@ -25,13 +28,14 @@ class RecordsController < ApplicationController
   end
   
   def update
-    @record.stop_time = Time.now
+    @record.add_elapsed_time
     @record.save
+    @record.start_time = Time.now
     redirect_to @record
   end
   
   def finish
-    @record.stop_time = Time.now
+    @record.add_elapsed_time
     @record.finished = true
     @record.save
     render :result
@@ -47,10 +51,11 @@ class RecordsController < ApplicationController
   end
   
   def record_create
-    params.require(:record).permit(:label, :start_time, :display_support, :null_timer, :finished)
+    params.require(:record).permit(:label, :display_support, :null_timer)
   end
-  def finish_validate
-    if @record.finished
+  
+  def show_validate
+    if @record.finished == true
       flash[:danger] = "既に勉強を終了しています。"
       redirect_to action: :new
     else

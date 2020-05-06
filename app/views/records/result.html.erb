@@ -6,7 +6,8 @@
         <div>
           <p><%= @record.id %></p>
           <p>おつかれさまです！</p>
-          <p><%= Time.at(@record.stop_time.to_f - @record.start_time.to_f).utc.strftime('%X') %></p>
+          <p>経過時間: <%= Time.at(@record.elapsed_time.to_f).utc.strftime('%X') %> </p>
+          
         </div>
         <%= link_to 'ホーム', root_path %>
       </div>

@@ -14,13 +14,15 @@
           <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
         <% end %>
       </aside>
-      <div class="col-md-8 scroll">
+      <div class="col-md-8">
         <div class="feed">
           <ul class="nav nav-tabs nav-justified">
             <li class="nav-item"><%= link_to "すべて", microposts_path %></li>
             <li class="nav-item"><%= link_to "フォロー", following_posts_micropost_path(@current_user) %></li>
           </ul>
-          <%= render "microposts/microposts", microposts: @microposts %>
+          <div class="scroll">
+            <%= render "microposts/microposts", microposts: @microposts %>
+          </div>  
         </div>
       </div>
     </div>

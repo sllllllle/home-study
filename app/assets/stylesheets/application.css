@@ -78,6 +78,7 @@ main {
 
 .scroll {
   overflow-y: auto;
+  height: 580px;
 }
 
 .height-fixed {

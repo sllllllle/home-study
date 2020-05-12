@@ -7,12 +7,11 @@ class User < ApplicationRecord
   # enum gender: { "man": 1, "woman": 2, "other": 3}
   
   has_secure_password
-  
+  # プロフィール画像
   has_one_attached :profile_image
   
   has_many :microposts
   has_many :records
-  
   
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
@@ -22,6 +21,10 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_post, through: :favorites, source: :micropost
   
+  has_many :supports
+  has_many :support_record, through: :supports, source: :record
+  
+  # ----------Start of relationships----------
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -40,7 +43,9 @@ class User < ApplicationRecord
   def feed_microposts
     Micropost.where(user_id: self.following_ids + [self.id])
   end
+  # ----------End of relationships----------
   
+  # ----------Start of favorites----------
   def favorite(micropost)
     self.favorites.find_or_create_by(micropost_id: micropost.id)
   end
@@ -57,7 +62,22 @@ class User < ApplicationRecord
   def favorite_microposts
     Micropost.where(id: self.favorite_post_ids)
   end
+  # ----------End of favorites----------
   
   
+  # ----------Start of supports----------
+  def support(record)
+    self.supports.find_or_create_by(record_id: record.id)
+  end
+  
+  def unsupport(record)
+    support = self.supports.find_by(record_id: record.id)
+    support.destroy if support
+  end
+  
+  def support?(record)
+    self.support_record.include?(record)
+  end
+  # ----------End of Supports----------
   
 end

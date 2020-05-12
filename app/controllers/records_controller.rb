@@ -1,5 +1,5 @@
 class RecordsController < ApplicationController
-  before_action :set_record, only: [:show, :edit, :update, :finish, :result]
+  before_action :set_record, only: [:show, :stop, :restart, :result]
   before_action :show_validate, only: [:show]
   before_action :create_validate, only: [:create]
   
@@ -10,34 +10,39 @@ class RecordsController < ApplicationController
     @record = Record.new
   end
   
-  def edit
-  end
   
   def create
     @record = current_user.records.build(record_create)
-    @record.start_time = Time.zone.now
+    @record.start_time = Time.now
     @record.elapsed_time = 0
+    @record.stopped = false
     @record.finished = false
     if @record.save
       flash[:success] = "開始しました"
-      redirect_to @record
+      redirect_to root_url
     else
       flash.now[:danger] = "開始できませんでした"
       render :new
     end
   end
   
-  def update
+  def stop
     @record.add_elapsed_time
-    @record.save
     @record.start_time = Time.now
-    redirect_to @record
+    @record.stopped = true
+    @record.save
+    redirect_back(fallback_location: "/")
+  end
+  
+  def restart
+    @record.start_time = Time.now
+    @record.stopped = false
+    @record.save
+    redirect_back(fallback_location: "/")
   end
   
   def finish
-    @record.add_elapsed_time
-    @record.finished = true
-    @record.save
+    finish_record
     render :result
   end
   
@@ -55,7 +60,7 @@ class RecordsController < ApplicationController
   end
   
   def show_validate
-    if @record.finished == true
+    if @record.finished
       flash[:danger] = "既に勉強を終了しています。"
       redirect_to action: :new
     else

@@ -1,0 +1,10 @@
+<div class="studying_banner">
+  <p><%= record.id %></p>
+  <p><%= record.label %></p>
+  <p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+  <p><%= link_to "一時停止", stop_record_path(record) %></p>
+  <p><%= link_to "再開", restart_record_path(record) %></p>
+  <p><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></p>
+  <p><%= link_to "サポーターズ", supporters_supports_path %></p>
+  
+</div>

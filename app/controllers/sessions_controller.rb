@@ -1,4 +1,9 @@
 class SessionsController < ApplicationController
+  include ApplicationHelper
+  
+  before_action :finish_record, only: [:destroy], if: :studying?
+
+  
   def new
   end
 
@@ -31,4 +36,5 @@ class SessionsController < ApplicationController
       return false
     end
   end
+  
 end

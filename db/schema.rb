@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_29_065058) do
+ActiveRecord::Schema.define(version: 2020_05_10_131234) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -54,13 +54,15 @@ ActiveRecord::Schema.define(version: 2020_04_29_065058) do
   create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "label"
-    t.datetime "start_time"
-    t.datetime "stop_time"
-    t.datetime "elapsed_time"
+    t.time "start_time"
+    t.time "stop_time"
+    t.bigint "elapsed_time"
     t.boolean "display_support"
     t.boolean "null_timer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "finished"
+    t.boolean "stopped"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
@@ -72,6 +74,16 @@ ActiveRecord::Schema.define(version: 2020_04_29_065058) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "supports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_id"], name: "index_supports_on_record_id"
+    t.index ["user_id", "record_id"], name: "index_supports_on_user_id_and_record_id", unique: true
+    t.index ["user_id"], name: "index_supports_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -95,4 +107,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_065058) do
   add_foreign_key "records", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "supports", "records"
+  add_foreign_key "supports", "users"
 end

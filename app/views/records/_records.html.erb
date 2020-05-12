@@ -6,8 +6,9 @@
       <% end %>
       <p>ID: <%= record.id %></p>
       <p>ラベル: <%= record.label %></p>
-      <p><%= record.created_at.strftime('%Y/%m/%d') %></p>
-      
+      <p>時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+      <p>日付: <%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
+      <p>エール: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
     </li>
   <% end %>
 </ul>

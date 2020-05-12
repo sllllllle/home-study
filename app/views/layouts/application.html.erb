@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,7 +9,6 @@
     <%= csp_meta_tag %>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="toppage.css" type="text/css" />
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -22,20 +21,26 @@
   </head>
 
   <body>
-    <header>
-      <%= render "toppages/header" %>
-    </header>
-    <main>
-      <%= render 'layouts/flash_messages' %>
-      <div class="container">
-        <div class="d-flex justify-content-center align-items-center main-block">
-          <%= yield %>
-        </di>
-      </div>
-    </main>
-    
-    <footer>
-      <%= render "toppages/footer" %>
-    </footer>
+    <div class="wrapper">
+      <header>
+        <%= render "toppages/header" %>
+      </header>
+      <main>
+        <%= render 'layouts/flash_messages' %>
+        <div class="container">
+          <div class="d-flex justify-content-center align-items-center main-block">
+            <%= yield %>
+          </div>
+        </div>
+      </main>
+      
+      <footer>
+        <% if studying? %>
+          <%= render "records/show", record: @record %>
+        <% else %>
+          <%= render "toppages/footer" %>
+        <% end %>
+      </footer>
+    </div>
   </body>
 </html>

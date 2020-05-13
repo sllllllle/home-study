@@ -6,7 +6,23 @@
         <% @followings.each do |user| %>
           <li>
             <div>
-              <%= link_to user.name, user_path(user) %>  
+              <%= link_to user.name, user_path(user) %>
+              <% if user.profile_image.attached? %>
+                <%= image_tag user.profile_image.variant(resize: "60x60" ) %>
+              <% else %>
+                <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+              <% end %>
+              <p>性別: 
+                <%= case user.gender 
+                    when 1
+                      "男性"
+                    when 2
+                      "女性"
+                    else
+                      "その他"
+                    end %>
+              </p>
+              <p>年代: <%= user.age %>代</p>
               <% if current_user.following?(user) %>
                 <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
                   <%= hidden_field_tag :follow_id, user.id %>

@@ -6,9 +6,13 @@
       <% end %>
       <p>ID: <%= record.id %></p>
       <p>ラベル: <%= record.label %></p>
-      <p>時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+      <% unless record.null_timer == true %>
+        <p>時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+      <% end %>
       <p>日付: <%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
-      <p>エール: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
+      <% unless record.hide_support == true %>
+          <p>エール数: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
+      <% end %>
     </li>
   <% end %>
 </ul>

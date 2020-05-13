@@ -10,10 +10,9 @@
             <%= f.text_area :label %>
           </div>
           <div>
-            <%= f.check_box :display_support %>
-            <%= f.label :display_support, "エールを表示しない" %>
+            <%= f.check_box :hide_support %>
+            <%= f.label :hide_support, "エールを表示しない" %>
           </div>
-          <!--あとでチェックボックスがtrueかfalseの値を送信できるようにする-->
           <div>
             <%= f.check_box :null_timer %>
             <%= f.label :null_timer, "時間を計測しない" %>

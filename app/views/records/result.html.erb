@@ -4,9 +4,15 @@
       <div>
         <h1>勉強終了</h1>
         <div>
-          <p><%= @record.id %></p>
           <p>おつかれさまです！</p>
-          <p>経過時間: <%= Time.at(@record.elapsed_time).strftime('%X') %> </p>
+          <p><%= @record.label %></p>
+          <% unless @record.null_timer == true %>
+            <p>経過時間: <%= Time.at(@record.elapsed_time).strftime('%X') %> </p>
+          <% end %>
+          
+          <% unless @record.hide_support == true %>
+            <p>エール数: <span class="badge badge-secondary"><%= support_counts(@record) %></span></p>
+          <% end %>
         </div>
         <%= link_to 'ホーム', root_path %>
       </div>

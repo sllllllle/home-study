@@ -1,10 +1,16 @@
 <div class="studying_banner">
   <p><%= record.id %></p>
   <p><%= record.label %></p>
-  <p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+  <% unless record.null_timer == true %>
+    <p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+  <% end %>
   <p><%= link_to "一時停止", stop_record_path(record) %></p>
   <p><%= link_to "再開", restart_record_path(record) %></p>
   <p><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></p>
-  <p><%= link_to "サポーターズ", supporters_supports_path %></p>
+  <% if record.hide_support == true %>
+    <p>エール</p>
+  <% else %>
+    <p><%= link_to "エール", supporters_supports_path %><span class="badge badge-secondary"><%= support_counts(record) %></span></p>
+  <% end %>
   
 </div>

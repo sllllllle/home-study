@@ -21,16 +21,16 @@
             <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
           </div>
           <div>
-            <%= f.check_box :display_gender %>
-            <%= f.label :display_gender, "性別を非公開にする" %>
+            <%= f.check_box :hide_gender %>
+            <%= f.label :hide_gender, "性別を非公開にする" %>
           </div>
           <div>
-            <%= f.check_box :display_age %>
-            <%= f.label :display_age, "年代を非公開にする" %>
+            <%= f.check_box :hide_age %>
+            <%= f.label :hide_age, "年代を非公開にする" %>
           </div>
           <div>
-            <%= f.check_box :display_records %>
-            <%= f.label :display_records, "勉強履歴を非公開にする" %>
+            <%= f.check_box :hide_records %>
+            <%= f.label :hide_records, "勉強履歴を非公開にする" %>
           </div>
           
           <%= f.submit '更新' %>

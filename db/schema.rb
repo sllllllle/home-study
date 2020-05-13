@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_10_131234) do
+ActiveRecord::Schema.define(version: 2020_05_12_091250) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 2020_05_10_131234) do
     t.time "start_time"
     t.time "stop_time"
     t.bigint "elapsed_time"
-    t.boolean "display_support"
+    t.boolean "hide_support"
     t.boolean "null_timer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "finished"
     t.boolean "stopped"
+    t.boolean "finished"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 
@@ -93,9 +93,9 @@ ActiveRecord::Schema.define(version: 2020_05_10_131234) do
     t.integer "age"
     t.string "password_digest"
     t.string "profile_image"
-    t.boolean "display_gender"
-    t.boolean "display_age"
-    t.boolean "display_records"
+    t.boolean "hide_gender"
+    t.boolean "hide_age"
+    t.boolean "hide_records"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

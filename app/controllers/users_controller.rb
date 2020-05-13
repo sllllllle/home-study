@@ -1,10 +1,21 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :records]
+  before_action :set_user, only: [
+    :show, 
+    :edit, 
+    :update, 
+    :edit_password, 
+    :update_password,
+    :followings, 
+    :followers, 
+    :likes, 
+    :records
+    ]
+  before_action :set_count, only: [:show, :likes, :records]
   before_action :require_user_logged_in, only: [:show]
+  
   
   def show
     @microposts = @user.microposts.order(id: :desc)
-    # counts(@user)
   end
 
   def new
@@ -35,6 +46,19 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit_password
+  end
+  
+  def update_password
+    if correct_password(params[:current_password])
+      flash[:success] = 'パスワードを変更しました。'
+      redirect_to @user
+    else
+      flash[:danger] = "パスワードを変更できませんでした"
+      render :edit_password
+    end
+  end
+  
   def followings
     @followings = @user.followings
     # counts(@user)
@@ -52,10 +76,11 @@ class UsersController < ApplicationController
   def records
     @records = @user.records.where(finished: true).order(id: :desc)
   end
+  
   private
   
   def user_update
-    params.require(:user).permit(:name, :email, :gender, :age, :display_gender, :display_age, :display_records)
+    params.require(:user).permit(:name, :email, :gender, :age, :hide_gender, :hide_age, :hide_records)
   end
   
   def user_create
@@ -65,4 +90,18 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
+  def set_count
+    counts(@user)
+  end
+  
+  # def correct_password(current_password)
+  #   @user = current_user
+  #   if @user && @user.authenticate(current_password)
+  #     @user.
+  #     @user.update
+  #   else
+  #     return false
+  #   end
+  # end
 end

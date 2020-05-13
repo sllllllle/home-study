@@ -3,6 +3,10 @@ class RecordsController < ApplicationController
   before_action :show_validate, only: [:show]
   before_action :create_validate, only: [:create]
   
+  def index
+    @records = Record.where(finished: false)
+  end
+  
   def show
   end
   
@@ -56,7 +60,7 @@ class RecordsController < ApplicationController
   end
   
   def record_create
-    params.require(:record).permit(:label, :display_support, :null_timer)
+    params.require(:record).permit(:label, :hide_support, :null_timer)
   end
   
   def show_validate

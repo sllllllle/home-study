@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   
   # 簡単ログイン
-  post 'login_as_sue', to: 'guest_sessions#sue'
-  post 'login_as_taro', to: 'guest_sessions#taro'
+  post 'login_as_suenaga', to: 'guest_sessions#suenaga'
+  post 'login_as_katsuyuki', to: 'guest_sessions#katsuyuki'
   
   # 勉強を始める
   get "start", to: "records#new"
   
   resources :users, only: [:index, :show, :new, :edit, :create, :update] do
-    member do 
+    member do
+      get :edit_password
+      get :update_password
       get :followings
       get :followers
       get :likes
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :records, only: [:show, :new, :edit, :create] do
+  resources :records, only: [:index, :show, :new, :edit, :create] do
     member do
       get :stop
       get :restart

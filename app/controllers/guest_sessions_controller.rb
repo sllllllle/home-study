@@ -1,5 +1,4 @@
 class GuestSessionsController < SessionsController
-  # skip_before_action :login_required
   
   def suenaga
     login("suenaga@gmail.com", "2423abc")

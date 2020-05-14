@@ -23,7 +23,7 @@ class RecordsController < ApplicationController
     @record.finished = false
     if @record.save
       flash[:success] = "開始しました"
-      redirect_to root_url
+      redirect_to records_path
     else
       flash.now[:danger] = "開始できませんでした"
       render :new

@@ -7,7 +7,7 @@ class GuestSessionsController < SessionsController
   end
   
   def katsuyuki
-    login("katsuyuki@gmail.com", "2423abc")
+    login("katsuyuki2@gmail.com", "2423abc")
     flash[:success] = "'katsuyuki'でログインしました"
     redirect_to @user
   end

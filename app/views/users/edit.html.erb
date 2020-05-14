@@ -4,7 +4,16 @@
       <h1>ユーザー設定</h1>
       <div>
         <%= form_with(model: @user, local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
+        <%= render 'layouts/error_messages', model: @user %>
+          <div>
+            <% if @user.profile_image.attached? %>
+              <%= image_tag @user.profile_image.variant(resize: "60x60" ) %>
+            <% else %>
+              <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+            <% end %>
+            <%= f.label :profile_image, 'プロフィール画像変更' %>
+            <%= f.file_field :profile_image %>
+          </div>
           <div>
             <%= f.label :name, 'ユーザー名' %>
             <%= f.text_field :name %>
@@ -32,7 +41,6 @@
             <%= f.check_box :hide_records %>
             <%= f.label :hide_records, "勉強履歴を非公開にする" %>
           </div>
-          
           <%= f.submit '更新' %>
         <% end %>
         <%= link_to "戻る", user_path(@user) %>

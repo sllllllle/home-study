@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :new, :edit, :create, :update] do
     member do
-      get :edit_password
-      get :update_password
       get :followings
       get :followers
       get :likes
@@ -48,4 +46,5 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy]
   resources :favorites, only: [:create, :destroy]
+  resource :password, only: [:show, :edit, :update]
 end

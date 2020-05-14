@@ -46,19 +46,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def edit_password
-  end
-  
-  def update_password
-    if correct_password(params[:current_password])
-      flash[:success] = 'パスワードを変更しました。'
-      redirect_to @user
-    else
-      flash[:danger] = "パスワードを変更できませんでした"
-      render :edit_password
-    end
-  end
-  
   def followings
     @followings = @user.followings
     # counts(@user)
@@ -80,7 +67,7 @@ class UsersController < ApplicationController
   private
   
   def user_update
-    params.require(:user).permit(:name, :email, :gender, :age, :hide_gender, :hide_age, :hide_records)
+    params.require(:user).permit(:name, :email, :gender, :age, :profile_image, :hide_gender, :hide_age, :hide_records)
   end
   
   def user_create
@@ -95,13 +82,4 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
-  # def correct_password(current_password)
-  #   @user = current_user
-  #   if @user && @user.authenticate(current_password)
-  #     @user.
-  #     @user.update
-  #   else
-  #     return false
-  #   end
-  # end
 end

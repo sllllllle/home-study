@@ -3,21 +3,20 @@
     <div class="col lg-block text-center">
       <h1>パスワード変更</h1>
       <div>
-        <%= form_with(url: update_password_user_path, local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
+        <%= form_with(model: @user, url: password_path, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: @user %>
           <div>
             <%= f.label :current_password, '現在のパスワード' %>
             <%= f.password_field :current_password %>
           </div>
           <div>
-            <%= f.label :password, '新しいパスワード' %>
-            <%= f.password_field :password %>
+            <%= f.label :new_password, '新しいパスワード' %>
+            <%= f.password_field :new_password %>
           </div>
           <div>
             <%= f.label :password_confirmation, '新しいパスワード（確認用）' %>
             <%= f.password_field :password_confirmation %>
           </div>
-          
           <%= f.submit '更新' %>
         <% end %>
         <%= link_to "戻る", user_path(@user) %>

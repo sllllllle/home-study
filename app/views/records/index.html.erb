@@ -16,7 +16,6 @@
             </a>
             <%= render "supports/support_button", record: record %>
             <div class="media-body">
-              <p>ID: <%= record.id %></p>
               <p>名前: <%= record.user.name %></p>
               <p>性別: 
                 <%= case record.user.gender 
@@ -30,11 +29,9 @@
               </p>
               <p>年代: <%= record.user.age %>代</p>
               <p>ラベル: <%= record.label %></p>
-              <p>エール非公開: <%= record.hide_support %></p>
               <% unless record.hide_support == true %>
                 <p>エール数: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
               <% end %>
-              <p>finished: <%= record.finished %></p>
             </div>
           </div>
         </li>

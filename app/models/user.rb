@@ -3,11 +3,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-                    
-  # enum gender: { male: 1, female: 2, other: 3 }
+  
+  attr_accessor :current_password
+  validates :new_password, presence: { if: :current_password }
   
   has_secure_password
-  # プロフィール画像
   has_one_attached :profile_image
   
   has_many :microposts

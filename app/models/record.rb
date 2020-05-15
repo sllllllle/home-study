@@ -1,4 +1,6 @@
 class Record < ApplicationRecord
+  validates :label, length: { maximum: 30 }
+
   belongs_to :user
   
   has_many :supports, dependent: :destroy

@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [
-    :show, 
-    :edit, 
-    :update, 
-    :edit_password, 
+    :show,
+    :update,
+    :edit_password,
     :update_password,
-    :followings, 
-    :followers, 
-    :likes, 
+    :followings,
+    :followers,
+    :likes,
     :records
     ]
   before_action :set_count, only: [:show, :likes, :records]
-  before_action :require_user_logged_in, only: [:show]
-  
+  before_action :require_user_logged_in, only: [:show, :edit]
+  before_action :correct_user, only: [:edit]
   
   def show
     @microposts = @user.microposts.order(id: :desc)
@@ -82,4 +81,12 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def correct_user
+    if User.find(params[:id]) != current_user
+      @user = User.find(params[:id])
+      redirect_to @user
+    else
+      @user = User.find(params[:id])
+    end
+  end
 end

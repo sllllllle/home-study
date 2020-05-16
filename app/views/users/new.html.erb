@@ -28,6 +28,10 @@
             <%= f.label :age, '年代' %>
             <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
           </div>
+          <div>
+            <%= f.label :profile_image, 'プロフィール画像変更' %>
+            <%= f.file_field :profile_image %>
+          </div>
           <%= f.submit '登録' %>
         <% end %>
       </div>

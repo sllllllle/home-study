@@ -1,7 +1,8 @@
 class RecordsController < ApplicationController
+  before_action :require_user_logged_in, only: [:new]
   before_action :set_record, only: [:show, :stop, :restart, :result]
   before_action :show_validate, only: [:show]
-  before_action :create_validate, only: [:create]
+  before_action :create_validate, only: [:new]
   
   def index
     @records = Record.where(finished: false)
@@ -75,7 +76,7 @@ class RecordsController < ApplicationController
   def create_validate
     if current_user.records.where(finished: false).size >= 1
       flash[:danger] = "既に勉強を開始しています"
-      redirect_to action: :new
+      redirect_to action: :index
     else
       return
     end

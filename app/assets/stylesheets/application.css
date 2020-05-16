@@ -79,11 +79,25 @@ main {
 
 .scroll {
   overflow-y: auto;
-  height: 580px;
+  height: 80%;
 }
 
 .height-fixed {
   height: 350px;
+}
+
+.profile_image_list {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-position: center center;
+}
+
+.profile_image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-position: center center;
 }
 
 footer {

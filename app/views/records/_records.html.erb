@@ -2,7 +2,7 @@
   <% records.each do |record| %>
     <li>
       <% if record.user.profile_image.attached? %>
-        <%= image_tag record.user.profile_image.variant(resize: "60x60" ) %>
+        <%= image_tag(record.user.profile_image, class: "profile_image_list") %>
       <% else %>
         <%= image_tag "default_image.png", width: "60px", height: "60px" %>
       <% end %>

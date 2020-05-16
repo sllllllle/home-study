@@ -1,5 +1,4 @@
 <div class="studying_banner">
-  <p><%= record.id %></p>
   <p><%= record.label %></p>
   <% unless record.null_timer == true %>
     <!--<p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>-->
@@ -10,9 +9,6 @@
     <button><%= link_to "再開", restart_record_path(record) %></button>
   <% end %>
     <button><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></button>
-  <!--<button id="stop"><%= link_to "一時停止", stop_record_path(record), remote: true %></button>-->
-  <!--<button id="restart"><%= link_to "再開", restart_record_path(record), remote: true %></button>-->
-  <!--<button id="finish"><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></button>-->
   <% if record.hide_support == true %>
     <p>エール</p>
   <% else %>
@@ -20,35 +16,3 @@
   <% end %>
   
 </div>
-
-<!--<script>-->
-  
-<!--  console.log("hello2");-->
-  
-<!--  const stop = document.getElementById('stop');-->
-<!--  const restart = document.getElementById('restart')-->
-<!--  const finish = document.getElementById('finish')-->
-  
-<!--  function setButtonStateRunning() {-->
-<!--    stop.style.visibility ="visible";-->
-<!--    restart.style.visibility ="hidden";-->
-<!--    finish.style.visibility ="visible";-->
-<!--  }-->
-  
-<!--  function setButtonStateStopped() {-->
-<!--    stop.style.visibility ="hidden";-->
-<!--    restart.style.visibility ="visible";-->
-<!--    finish.style.visibility ="visible";-->
-<!--  }-->
-  
-<!--  setButtonStateRunning();-->
-  
-<!--  stop.addEventListener('click', () => {-->
-<!--    setButtonStateStopped();-->
-<!--  });-->
-  
-<!--  restart.addEventListener('click', () => {-->
-<!--    setButtonStateRunning();-->
-<!--  });-->
-  
-<!--</script>-->

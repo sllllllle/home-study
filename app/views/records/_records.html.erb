@@ -6,7 +6,6 @@
       <% else %>
         <%= image_tag "default_image.png", width: "60px", height: "60px" %>
       <% end %>
-      <p>ID: <%= record.id %></p>
       <p>ラベル: <%= record.label %></p>
       <% unless record.null_timer == true %>
         <p>時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>

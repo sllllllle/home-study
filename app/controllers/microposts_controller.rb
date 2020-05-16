@@ -17,8 +17,8 @@ class MicropostsController < ApplicationController
       redirect_to microposts_path
     else
       @microposts = Micropost.order(id: :desc)
-      flash.now[:danger] = "投稿できませんでした"
-      render microposts_path
+      flash[:danger] = "投稿できませんでした"
+      redirect_to microposts_path
     end
   end
 

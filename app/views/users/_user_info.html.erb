@@ -8,9 +8,8 @@
 </div>
 <div>
   <h3><%= user.name %></h3>
-  <p><%= user.id %></p>
   <% if user.hide_gender == true %>
-    <p>性別: 非公開 %>
+    <p>性別: 非公開</p>
   <% else %>
     <p>性別: 
       <%= case user.gender 

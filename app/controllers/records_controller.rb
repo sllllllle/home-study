@@ -35,12 +35,14 @@ class RecordsController < ApplicationController
     @record.start_time = Time.now
     @record.stopped = true
     @record.save
+    redirect_back(fallback_location: "/")
   end
   
   def restart
     @record.start_time = Time.now
     @record.stopped = false
     @record.save
+    redirect_back(fallback_location: "/")
   end
   
   def finish

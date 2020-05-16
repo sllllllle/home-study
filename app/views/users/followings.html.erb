@@ -7,10 +7,10 @@
           <li>
             <div>
               <%= link_to user.name, user_path(user) %>
-              <% if user.profile_image.attached? %>
-                <%= image_tag(micropost.user.profile_image, class: "profile_image_list") %>
+              <% if user.img.present? %>
+                <%= image_tag user.img.url, class: "profile_image_list"  %>
               <% else %>
-                <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+                <%= image_tag "default_image.png", width: "123px", height: "123px" %>
               <% end %>
               <p>性別: 
                 <%= case user.gender 

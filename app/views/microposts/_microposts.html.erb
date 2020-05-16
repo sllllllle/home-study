@@ -2,10 +2,10 @@
   <% microposts.each do |micropost| %>
     <li>
       <div>
-        <% if micropost.user.profile_image.attached? %>
-          <%= image_tag(micropost.user.profile_image, class: "profile_image_list") %>
+        <% if micropost.user.img.present? %>
+          <%= image_tag micropost.user.img.url, class: "profile_image_list"  %>
         <% else %>
-          <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+          <%= image_tag "default_image.png", width: "123px", height: "123px" %>
         <% end %>
         <%= link_to micropost.user.name, user_path(micropost.user) %> | posted_at <%= micropost.created_at %>
       </div>

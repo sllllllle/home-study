@@ -1,7 +1,7 @@
 <h1>ユーザー詳細</h1>
 <div>
-  <% if user.profile_image.attached? %>
-    <%= image_tag(user.profile_image, class: "profile_image") %>
+  <% if user.img.present? %>
+    <%= image_tag user.img.url, class: "profile_image" %>
   <% else %>
     <%= image_tag "default_image.png", width: "123px", height: "123px" %>
   <% end %>

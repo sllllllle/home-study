@@ -6,10 +6,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :gender
       t.integer :age
       t.string :password_digest
-      t.string :profile_image
-      t.boolean :display_gender
-      t.boolean :display_age
-      t.boolean :display_records
+      t.string :img
+      t.boolean :hide_gender
+      t.boolean :hide_age
+      t.boolean :hide_records
 
       t.timestamps
     end

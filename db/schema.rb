@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_065223) do
+ActiveRecord::Schema.define(version: 2020_05_10_131234) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_05_12_065223) do
     t.integer "gender"
     t.integer "age"
     t.string "password_digest"
-    t.string "profile_image"
+    t.string "img"
     t.boolean "hide_gender"
     t.boolean "hide_age"
     t.boolean "hide_records"

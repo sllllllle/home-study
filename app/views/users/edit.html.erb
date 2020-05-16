@@ -6,13 +6,16 @@
         <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: @user %>
           <div>
-            <% if @user.profile_image.attached? %>
-              <%= image_tag @user.profile_image.variant(resize: "60x60" ) %>
+            <% if @user.img.present? %>
+              <%= image_tag @user.img.url, class: "profile_image_list"  %>
             <% else %>
-              <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+              <%= image_tag "default_image.png", width: "123px", height: "123px" %>
             <% end %>
-            <%= f.label :profile_image, 'プロフィール画像変更' %>
-            <%= f.file_field :profile_image %>
+          </div>
+          <div>
+            <%= f.label :img, 'プロフィール画像変更' %>
+            <%= f.file_field :img, id: :book_img %>
+            <p><%= f.check_box :remove_img %>画像を削除する</p>
           </div>
           <div>
             <%= f.label :name, 'ユーザー名' %>

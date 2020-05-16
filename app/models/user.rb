@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :profile_image
   
+  mount_uploader :img, ImgUploader
+  
   has_many :microposts
   has_many :records
   

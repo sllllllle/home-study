@@ -66,11 +66,11 @@ class UsersController < ApplicationController
   private
   
   def user_update
-    params.require(:user).permit(:name, :email, :gender, :age, :profile_image, :hide_gender, :hide_age, :hide_records)
+    params.require(:user).permit(:name, :email, :gender, :age, :img, :remove_img, :hide_gender, :hide_age, :hide_records)
   end
   
   def user_create
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :age, :profile_image)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender, :age, :img)
   end
   
   def set_user

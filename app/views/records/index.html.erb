@@ -8,10 +8,10 @@
             <% @records.each do |record| %>
             <li>
               <div class="media">
-                <% if record.user.profile_image.attached? %>
-                  <%= image_tag(record.user.profile_image, class: "profile_image_list") %>
+                <% if record.user.img.present? %>
+                  <%= image_tag record.user.img.url, class: "profile_image_list"  %>
                 <% else %>
-                  <%= image_tag "default_image.png", width: "60px", height: "60px" %>
+                  <%= image_tag "default_image.png", width: "123px", height: "123px" %>
                 <% end %>
                 <%= render "supports/support_button", record: record %>
                 <div class="media-body">

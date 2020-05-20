@@ -1,14 +1,8 @@
 class GuestSessionsController < SessionsController
   
-  def suenaga
-    login("suenaga@gmail.com", "2423abc")
-    flash[:success] = "'suenaga'でログインしました"
-    redirect_to @user
-  end
-  
-  def katsuyuki
-    login("katsuyuki@gmail.com", "2423abc")
-    flash[:success] = "'katsuyuki'でログインしました"
+  def test
+    login("test-user@gmail.com", "2423abc")
+    flash[:success] = "テストユーザーでログインしました"
     redirect_to @user
   end
 end

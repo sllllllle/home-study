@@ -3,12 +3,16 @@
     <% if current_user.support?(record) %>
       <%= form_with(model: current_user.supports.find_by(record_id: record.id), local: true, method: :delete) do |f| %>
         <%= hidden_field_tag :support_id, record.id %>
-        <%= f.submit "エール取消", class: 'btn btn-danger btn-block' %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class="fas fa-thumbs-up"></i><%= support_counts(record) %>
+        <% end %>
       <% end %>
     <% else %>
       <%= form_with(model: current_user.supports.build, local: true) do |f| %>
         <%= hidden_field_tag :support_id, record.id %>
-        <%= f.submit "エール", class: 'btn btn-primary btn-block' %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <i class="far fa-thumbs-up"></i><%= support_counts(record) %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

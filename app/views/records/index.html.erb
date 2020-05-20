@@ -1,42 +1,46 @@
-
-<div class="white-block">
-  <div class="row">
-    <div class="col large-block text-center">
-      <h1>勉強している人</h1>
-        <div class="scroll">
-          <ul>
-            <% @records.each do |record| %>
-            <li>
-              <div class="media">
-                <% if record.user.img.present? %>
-                  <%= image_tag record.user.img.url, class: "profile_image_list"  %>
-                <% else %>
-                  <%= image_tag "default_image.png", width: "123px", height: "123px" %>
-                <% end %>
-                <%= render "supports/support_button", record: record %>
-                <div class="media-body">
-                  <p>名前: <%= link_to record.user.name, user_path(record.user) %></p>
-                  <p>性別: 
-                    <%= case record.user.gender 
-                        when 1
-                          "男性"
-                        when 2
-                          "女性"
-                        else
-                          "その他"
-                        end %>
-                  </p>
-                  <p>年代: <%= record.user.age %>代</p>
-                  <p>ラベル: <%= record.label %></p>
-                  <% unless record.hide_support == true %>
-                    <p>エール数: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
-                  <% end %>
-                </div>
-              </div>
-            </li>
+<div class="main-wrapper">
+  <div class="largeBlock">
+    <h1>勉強している人</h1>
+    <% if @records.any? %>
+      <p>仲間にエールを送りましょう!</p>
+    <% else %>
+      <p>現在勉強している人はいません</p>
+    <% end %>
+    <div class="scroll">
+      <ul>
+        <% @records.each do |record| %>
+        <li>
+          <div class="card">
+            <% if record.user.img.present? %>
+              <%= image_tag record.user.img.url, class: "profileImageLg"  %>
+            <% else %>
+              <%= image_tag "default_image.png", class: 'profileImageLg' %>
             <% end %>
-          </ul>
-        </div>
+            <div class="recordsUserInfo">
+              <p><%= link_to record.user.name, user_path(record.user) %></p>
+              <p>
+                <%= case record.user.gender
+                    when 1
+                      "男性"
+                    when 2
+                      "女性"
+                    else
+                      "その他"
+                    end %>
+                    | <%= record.user.age %>代
+              </p>
+            </div>
+            <div class='recordsLabel'>
+              <p><%= record.label %></p>
+            </div>
+              <% unless record.hide_support == true %>
+                <%= render "supports/support_button", record: record -%>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

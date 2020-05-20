@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   
   # 簡単ログイン
-  post 'login_as_suenaga', to: 'guest_sessions#suenaga'
-  post 'login_as_katsuyuki', to: 'guest_sessions#katsuyuki'
+  post 'easy_login', to: 'guest_sessions#test'
   
   # 勉強を始める
   get "start", to: "records#new"

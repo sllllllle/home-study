@@ -1,40 +1,36 @@
-<div class="white-block">
-  <div class="row">
-    <div class="col lg-block text-center">
-      <h1>会員登録</h1>
-      <div>
-        <%= form_with(model: @user, local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-          <div>
-            <%= f.label :name, 'ユーザー名' %>
-            <%= f.text_field :name %>
-          </div>
-          <div>
-            <%= f.label :email, 'メールアドレス' %>
-            <%= f.email_field :email %>
-          </div>
-          <div>
-            <%= f.label :password, 'パスワード' %>
-            <%= f.password_field :password %>
-          </div>
-          <div>
-            <%= f.label :password_confirmation, '確認用のパスワード' %>
-            <%= f.password_field :password_confirmation %>
-          </div>
-          <div>
-            <%= f.select :gender, { "男": 1, "女": 2, 'その他': 3 }, { selected: 1 } %>
-          </div>
-          <div>
-            <%= f.label :age, '年代' %>
-            <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
-          </div>
-          <div>
-            <%= f.label :img, 'プロフィール画像' %>
-            <%= f.file_field :img %>
-          </div>
-          <%= f.submit '登録' %>
-        <% end %>
-      </div>
+<div class="main-wrapper">
+  <div class="longBlock">
+    <div class="signup-form">
+      <h2>会員登録</h2>
+      <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+        <div class="inputBox">
+          <%= f.text_field :name, class: 'inputLine' %>
+          <%= f.label :name, 'ユーザー名', class: 'label' %>
+        </div>
+        <div class="inputBox">
+          <%= f.email_field :email, class: 'inputLine' %>
+          <%= f.label :email, 'メールアドレス', class: 'label' %>
+        </div>
+        <div class="inputBox">
+          <%= f.password_field :password, class: 'inputLine' %>
+          <%= f.label :password, 'パスワード', class: 'label' %>
+        </div>
+        <div class="inputBox">
+          <%= f.password_field :password_confirmation, class: 'inputLine' %>
+          <%= f.label :password_confirmation, '確認用のパスワード', class: 'label' %>
+        </div>
+        <div class="selectBox">
+          <%= f.select :gender, { "男": 1, "女": 2, 'その他': 3 }, { selected: 1 } %>
+          <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
+        </div>
+        <div class="fileBox">
+          <%= f.label :img, 'プロフィール画像' %>
+          <%= f.file_field :img %>
+        </div>
+        <%= f.submit '登録', class: "submit" %>
+      <% end %>
     </div>
   </div>
-</div>
+</div
+

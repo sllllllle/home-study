@@ -2,8 +2,8 @@
   <div class="introduction">
     <h1>みんなと一緒に<br>勉強しましょう！</h1>
   </div>
-  <div class="login_wrapper">
-    <div class="login_form">
+  <div class="login-wrapper">
+    <div class="login-form">
       <h2>ログイン</h2>
       <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
         <div class="inputBox">
@@ -16,7 +16,7 @@
         </div>
         <p><%= f.submit "ログイン", class: 'submit' %></p>
       <% end %>
-      <p><%= link_to "簡単ログイン", easy_login_path, method: :post, class: 'simpleLogin' %></p>
+      <%= link_to "簡単ログイン", easy_login_path, method: :post, class: 'simpleLogin' %>
     </div>
   </div>
 </div>

@@ -14,4 +14,5 @@ class Record < ApplicationRecord
     stop_time = Time.zone.now
     self.elapsed_time += stop_time.to_i - start_time.to_i
   end
+  
 end

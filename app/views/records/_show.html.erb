@@ -1,18 +1,29 @@
 <div class="studying_banner">
-  <p><%= record.label %></p>
-  <% unless record.null_timer == true %>
-    <!--<p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>-->
-  <% end %>
-  <% if record.stopped == false %>
-    <button><%= link_to "一時停止", stop_record_path(record) %></button>
+  <% if record.user.img.present? %>
+    <%= image_tag record.user.img.url, class: "profileImageSm"  %>
   <% else %>
-    <button><%= link_to "再開", restart_record_path(record) %></button>
+    <%= image_tag "default_image.png", class: 'profileImageSm' %>
   <% end %>
+  <div class="buttons">
+    <% if record.stopped == false %>
+      <button><%= link_to "一時停止", stop_record_path(record) %></button>
+    <% else %>
+      <button><%= link_to "再開", restart_record_path(record) %></button>
+    <% end %>
     <button><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></button>
-  <% if record.hide_support == true %>
-    <p>エール</p>
-  <% else %>
-    <p><%= link_to "エール", supporters_supports_path %><span class="badge badge-secondary"><%= support_counts(record) %></span></p>
-  <% end %>
-  
+  </div>
+  <!--<div class="totalTime">-->
+  <!--  <% unless record.null_timer == true %>-->
+      <!--<p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>-->
+  <!--  <% end %>-->
+  <!--</div>-->
+  <div class="label">
+    <p><%= record.label %></p>
+  </div>
+  <div class="yells">
+    <% unless record.hide_support == true %>
+      <i class="fas fa-thumbs-up fa-lg"></i>
+      <%= link_to support_counts(record), supporters_supports_path %></p>
+    <% end %>
+  </div>
 </div>

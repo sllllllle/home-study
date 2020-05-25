@@ -1,6 +1,6 @@
 module CommonActions
   extend ActiveSupport::Concern
-  
+
   def finish_record
     @record.finished = true
     if @record.stopped

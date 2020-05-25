@@ -1,7 +1,5 @@
 class ToppagesController < ApplicationController
   def index
-    if current_user
-      redirect_to @current_user
-    end
+    redirect_to @current_user if current_user
   end
 end

@@ -1,7 +1,5 @@
 module ApplicationHelper
   def studying?
-    if current_user
-      @record = current_user.unfinished_records.last
-    end
+    @record = current_user.unfinished_records.last if current_user
   end
 end

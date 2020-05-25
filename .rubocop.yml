@@ -12,3 +12,9 @@ AllCops:
 # 日本語でのコメントを許可
 AsciiComments:
   Enabled: false
+  
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  
+Metrics/LineLength:
+  Enabled: false

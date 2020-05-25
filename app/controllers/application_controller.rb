@@ -1,15 +1,12 @@
 class ApplicationController < ActionController::Base
-  
   include SessionsHelper
-  
+
   private
-  
+
   def require_user_logged_in
-    unless logged_in?
-      redirect_to :root
-    end
+    redirect_to :root unless logged_in?
   end
-  
+
   def counts(user)
     @count_microposts = user.microposts.count
     @count_followings = user.followings.count
@@ -17,9 +14,7 @@ class ApplicationController < ActionController::Base
     @count_favorites = user.favorites.count
     @count_records = user.records.count
   end
-  
-  
-  
+
   def finish_record
     @record = current_user.unfinished_records.last
     @record.finished = true
@@ -30,5 +25,4 @@ class ApplicationController < ActionController::Base
       @record.save
     end
   end
-  
 end

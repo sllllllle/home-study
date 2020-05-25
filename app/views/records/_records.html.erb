@@ -1,19 +1,25 @@
 <ul>
   <% records.each do |record| %>
     <li>
-      <% if record.user.img.present? %>
-        <%= image_tag record.user.img.url, class: "profile_image_list"  %>
-      <% else %>
-        <%= image_tag "default_image.png", width: "123px", height: "123px" %>
-      <% end %>
-      <p>ラベル: <%= record.label %></p>
-      <% unless record.null_timer == true %>
-        <p>時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>
-      <% end %>
-      <p>日付: <%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
-      <% unless record.hide_support == true %>
-          <p>エール数: <span class="badge badge-secondary"><%= support_counts(record) %></span></p>
-      <% end %>
+      <div class="card">
+        <% if record.user.img.present? %>
+          <%= image_tag record.user.img.url, class: "profileImageMd"  %>
+        <% else %>
+          <%= image_tag "default_image.png", class: "profileImageMd" %>
+        <% end %>
+        <%= link_to record.user.name, user_path(record.user), class: "name" %>
+        <p class="content" ><%= record.label %></p>
+        <% unless record.null_timer == true %>
+          <p class="time" ><%= Time.at(record.elapsed_time).strftime("%X") %> </p>
+        <% end %>
+        <p class="postedAt"><%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
+        <% unless record.hide_support == true %>
+            <div class="yell">
+              <i class="fas fa-thumbs-up"></i>
+              <%= support_counts(record) %>
+            </div>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>

@@ -1,25 +1,24 @@
-<div class="white-block">
-  <div class="row">
-    <div class="col lg-block text-center">
-      <h1>パスワード変更</h1>
-      <div>
+<div class="main-wrapper">
+  <div class="longBlock">
+    <div class="alterPassword">
+      <h2>パスワード変更</h2>
         <%= form_with(model: @user, url: password_path, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: @user %>
-          <div>
-            <%= f.label :current_password, '現在のパスワード' %>
-            <%= f.password_field :current_password %>
+          <div class="inputBox">
+            <%= f.password_field :current_password, class: 'inputLine' %>
+            <%= f.label :current_password, '現在のパスワード', class: 'label' %>
           </div>
-          <div>
-            <%= f.label :new_password, '新しいパスワード' %>
-            <%= f.password_field :new_password %>
+          <div class="inputBox">
+            <%= f.password_field :new_password, class: 'inputLine' %>
+            <%= f.label :new_password, '新しいパスワード', class: 'label' %>
           </div>
-          <div>
-            <%= f.label :password_confirmation, '新しいパスワード（確認用）' %>
-            <%= f.password_field :password_confirmation %>
+          <div class="inputBox">
+            <%= f.password_field :password_confirmation, class: 'inputLine' %>
+            <%= f.label :password_confirmation, '新しいパスワード（確認用）', class: 'label' %>
           </div>
-          <%= f.submit '更新' %>
+          <%= f.submit '更新', class: "submit" %>
         <% end %>
-        <%= link_to "戻る", user_path(@user) %>
+        <%= link_to "戻る", user_path(@user), class: 'back' %>
       </div>
     </div>
   </div>

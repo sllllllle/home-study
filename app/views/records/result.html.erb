@@ -1,21 +1,20 @@
-<div class="white-block">
-  <div class="row">
-    <div class="col lg-block text-center">
+<div class="main-wrapper">
+  <div class="smallBlock">
+    <div class="result">
+      <h2>勉強終了</h2>
       <div>
-        <h1>勉強終了</h1>
-        <div>
-          <p>おつかれさまです！</p>
-          <p><%= @record.label %></p>
-          <% unless @record.null_timer == true %>
-            <p>経過時間: <%= Time.at(@record.elapsed_time).strftime('%X') %> </p>
-          <% end %>
-          
-          <% unless @record.hide_support == true %>
-            <p>エール数: <span class="badge badge-secondary"><%= support_counts(@record) %></span></p>
-          <% end %>
-        </div>
-        <%= link_to 'ホーム', records_path %>
+        <p>おつかれさまです！</p>
+        <p><%= @record.label %></p>
+        <% unless @record.null_timer == true %>
+          <p>経過時間</p>
+          <p class="elapsed_time"><%= Time.at(@record.elapsed_time).strftime('%X') %></p>
+        <% end %>
+        
+        <% unless @record.hide_support == true %>
+          <p class="yellicon">&#x1f4e3;<%= support_counts(@record) %></p>
+        <% end %>
       </div>
+      <%= link_to("ホーム", records_path, {class: "toHome"}) %>
     </div>
   </div>
 </div>

@@ -10,7 +10,7 @@ class CreateRecords < ActiveRecord::Migration[5.2]
       t.boolean :null_timer
       t.boolean :stopped
       t.boolean :finished
-      
+
       t.timestamps
     end
   end

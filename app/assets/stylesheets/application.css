@@ -13,68 +13,11 @@
  /**= require_tree .*/
  /**= require_self*/
  
-/*html {*/
-/*  height: 100%;*/
-/*}*/
-/*body {*/
-/*  margin: 0;*/
-/*  height: 100%;*/
-/*}*/
 
-/*header {*/
-/*  background-color: #F2FBF9;*/
-/*  width: 100%;*/
-/*  height: 70px;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*}*/
-
-/*.header-icon img {*/
-/*  width: 70px;*/
-/*  height: 50px;*/
-/*}*/
-
-
-/*.header-menu {*/
-/*  margin-left: auto;*/
-/*  margin-right: 60px;*/
-/*}*/
-
-
-
-/*.scroll {*/
-/*  overflow-y: auto;*/
-/*  height: 400px;*/
-/*}*/
-
-/*.height-fixed {*/
-/*  height: 350px;*/
-/*}*/
-
-/*.profile_image_list {*/
-/*  width: 60px;*/
-/*  height: 60px;*/
-/*  border-radius: 50%;*/
-/*  background-position: center center;*/
-/*}*/
-
-/*.profile_image {*/
-/*  width: 120px;*/
-/*  height: 120px;*/
-/*  border-radius: 50%;*/
-/*  background-position: center center;*/
-/*}*/
-
-/*footer {*/
-/*  background-color: #F2FBF9;*/
-/*  width: 100%;*/
-/*  height: 70px;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
-
-
+.scroll {
+  overflow-y: auto;
+  height: 540px;
+}
 /*.studying_banner {*/
 /*  width: 90%;*/
 /*  height: 70%;*/
@@ -100,10 +43,25 @@ header
 {
   background: #F6FBFE;
   height: 9vh;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
+.navbar
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+}
+.header-icon
+{
+  font-size: 36px;
+  font-weight: bold;
+}
+.header-menu li
+{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 main
 {
   background: #BBDEFC;
@@ -114,14 +72,34 @@ main
   position: absolute;
   width: 100%;
 }
-/*---------------Start of toppage---------------*/
-
 .main-wrapper
 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 82vh;
+}
+.longBlock
+{
+  background: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 65%;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+}
+.smallBlock
+{
+  background: #FFF;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 40%;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
 }
 .introduction
 {
@@ -131,7 +109,7 @@ main
 {
   font-weight: bold;
   font-size: 40px;
-  margin: 0
+  margin: 0;
 }
 .login-wrapper
 {
@@ -140,6 +118,7 @@ main
   height: 480px;
   background-color: #FFF;
   border-radius: 50%  50%  50%  50%  / 60%   60%   40%  40%;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
 }
 .login-form
 {
@@ -211,7 +190,7 @@ main
 
 /*---------------End of toppage---------------*/
 
-/*---------------Start of records---------------*/
+/*---------------Start of record/index---------------*/
 .largeBlock
 {
   background: #FFF;
@@ -221,6 +200,7 @@ main
   transform: translate(-50%, -50%);
   width: 800px;
   height: 65%;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
 }
 .largeBlock > h1
 {
@@ -242,20 +222,20 @@ main
   padding: 0;
   margin: 0;
 }
-.largeBlock  li
+.largeBlock .records li
 {
   list-style: none;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
-.largeBlock .card
+.card
 {
   height: 81px;
   width: 500px;
   border-radius: 30px;
 }
-.largeBlock .card .profileImageLg
+.largeBlock .card .profileImageMd
 {
   width: 80px;
   height: 80px;
@@ -279,26 +259,19 @@ main
   left: 45%;
   margin-right: 40px;
 }
-.largeBlock .card button
+.records .card .yell
 {
-  position: absolute;
-  top: 60%;
-  right: 7%;
+  display: flex;
 }
-
-/*---------------End of records---------------*/
+.records .card .SupportButton
+{
+  background: none;
+  border-style: none;
+}
+/*---------------End of record/index---------------*/
 
 /*---------------Start of signup---------------*/
-.longBlock
-{
-  background: #FFF;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
-  height: 65%;
-}
+
 .signup-form
 {
   position: absolute;
@@ -370,6 +343,448 @@ main
   margin-top: 20px;
 }
 /*---------------End of signup---------------*/
+
+/*---------------Start of user/show---------------*/
+.userBio
+{
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  width: 300px;
+}
+.userBio .profileImageLg
+{
+  width: 180px;
+  height: 180px;
+  margin: 70px 0 30px 50px;
+  user-select: none;
+}
+.userBio h3
+{
+  font-weight: bold;
+  font-size: 26px;
+  text-align: center;
+}
+.userBio p
+{
+  text-align: center;
+}
+.userBio .relationships
+{
+  display: flex;
+  justify-content: center;
+}
+.userBio .relationships > a
+{
+  margin: 0 10px 0 0;
+}
+.userBio .settings
+{
+  width: 300px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.userBio .settings > a
+{
+  text-align: center;
+  margin: 20px 70px 0;
+  background: #BBDEFC;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+}
+.cardLists
+{
+  position: absolute;
+  width: 450px;
+  top: 3%;
+  right: 3%;
+}
+.card
+{
+  position: relative;
+  height: 120px;
+  width: 430px;
+  margin-top: 5px;
+  border-radius: 30px;
+}
+.card .profileImageMd
+{
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 5%;
+  left: 5%;
+}
+.card .name
+{
+  font-weight: bold;
+  position: absolute;
+  top: 75%;
+  left: 2%;
+  font-size: 15px;
+}
+.card .postedAt
+{
+  position: absolute;
+  top: 75%;
+  left: 30%;
+  font-size: 13px;
+}
+.card .content
+{
+  position: absolute;
+  width: 280px;
+  top: 10%;
+  left: 30%;
+  font-size: 14px;
+}
+.card .delete
+{
+  position: absolute;
+  top: 75%;
+  left: 63%;
+  font-size: 13px;
+  font-weight: bold;
+}
+.card .likeButton
+{
+  position: absolute;
+  top: 72%;
+  left: 80%;
+  padding: 0;
+  color: red;
+  background: none;
+  border-style: none;
+}
+.card .likeCounts
+{
+  position: absolute;
+  top: 72%;
+  left: 86%;
+}
+
+/*---------------End of user/show---------------*/
+
+/*---------------Start of user/records---------------*/
+
+.userRecords .card
+{
+  position: relative;
+  height: 120px;
+  width: 430px;
+  margin-top: 20px;
+  border-radius: 30px;
+}
+.card .time
+{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  font-size: 13px;
+}
+.card .yell
+{
+  position: absolute;
+  top: 67%;
+  left: 80%;
+  font-size: 20px;
+}
+/*---------------End of user/records---------------*/
+
+/*---------------Start of timeline---------------*/
+
+.pagetitle
+{
+  position: absolute;
+  top: 4%;
+  left: 2%;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+}
+.postBox
+{
+  position: absolute;
+  width: 260px;
+  height: 100px;
+  top: 25%;
+  left: 2%;
+}
+
+.timeline
+{
+  position: absolute;
+  width: 450px;
+  height: 564px;
+  top: 3%;
+  right: 3%;
+  
+}
+
+/*---------------End of timeline---------------*/
+/*---------------Start of user/edit---------------*/
+.settingForm
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+}
+.settingForm .title
+{
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0 20px;
+}
+.editProfileImage
+{
+  width: 60px;
+  height: 60px;
+}
+.settingForm tr
+{
+  line-height: 37px;
+}
+
+.settingForm .submit
+{
+  border: none;
+  outline: none;
+  background: #BBDEFC;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  position: absolute;
+  top: 80%;
+  left: 44%;
+}
+
+.settingForm .back
+{
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+  position: absolute;
+  top: 87%;
+  left: 44%;
+}
+/*---------------End of user/edit---------------*/
+
+/*---------------Start of password/edit---------------*/
+.alterPassword
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.alterPassword > h2
+{
+  margin: 0 0 35px;
+  padding: 0;
+  text-align: center;
+  color: #000;
+}
+.alterPassword .inputBox
+{
+  position: relative;
+}
+.alterPassword .inputBox .inputLine
+{
+  width: 100%;
+  padding: 5px 0;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 20px;
+  outline: none;
+}
+.alterPassword .inputBox .label
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #000;
+  pointer-events: none;
+  transition: .5s;
+}
+.alterPassword .inputBox .inputLine:focus ~ .label
+{
+  top: -22px;
+  left: 0;
+  color: #03a9f4;
+  font-size: 14px
+}
+.alterPassword .submit
+{
+  border: none;
+  outline: none;
+  background: #BBDEFC;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+.back
+{
+  position: absolute;
+  top: 110%;
+  left: 44%;
+}
+/*---------------End of password/edit---------------*/
+
+/*---------------Start of records/new---------------*/
+.smallBlock
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.smallBlock h2
+{
+  font-weight: bold;
+  padding: 20px 0 20px;
+}
+.smallBlock .box
+{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.smallBlock .recordSubmit
+{
+  border: none;
+  background: #BBDEFC;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+/*---------------End of records/new---------------*/
+
+/*---------------Start of records/result---------------*/
+.result
+{
+  text-align: center;
+}
+.elapsed_time
+{
+  font-weight: bold;
+  font-size: 16px;
+}
+.yellicon
+{
+  font-size: 16px;
+}
+
+.result .toHome
+{
+  border: none;
+  background: #BBDEFC;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  top: 70%;
+  left: 42%;
+}
+
+/*---------------End of records/result---------------*/
+
+/*---------------Start of record/footer---------------*/
+
+.studying_banner
+{
+  background: #fff;
+  width: 80%;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+}
+.profileImageSm
+{
+  width: 65px;
+  height: 65px;
+  left: 13%;
+  position: absolute;
+}
+.studying_banner .buttons
+{
+  position: absolute;
+  left: 20%;
+}
+.studying_banner .buttons button
+{
+  background: #BBDEFC;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.studying_banner .label
+{
+  position: absolute;
+  left: 38%;
+  border: 1px solid rgb(137,186,231);
+  padding: 10px 250px;
+}
+.studying_banner .yells
+{
+  position: absolute;
+  left: 77%;
+}
+.studying_banner .yells p
+{
+  font-size: 20px;
+}
+/*---------------End of record/footer---------------*/
+
+/*---------------Start of followings/followers/supporters---------------*/
+.userslist > h2
+{
+  margin: 30px 0 35px;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  color: #000;
+}
+.userslist li
+{
+  list-style: none;
+}
+.userCard
+{
+  height: 70px;
+  width: 430px;
+  margin-top: 5px;
+  border-radius: 30px;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+}
+.userCard .name
+{
+  position: absolute;
+  left: 28%;
+  font-weight: bold;
+}
+.userCard .followBtn
+{
+  position: absolute;
+  left: 66%;
+  transform: translate(0, -50%);
+}
+
+/*---------------End of followings/followers/supporters---------------*/
+
+
 footer
 {
   background: #F6FBFE;

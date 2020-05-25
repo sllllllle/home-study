@@ -1,36 +1,34 @@
 <ul>
   <% microposts.each do |micropost| %>
     <li>
-      <div>
+      <div class='card'>
         <% if micropost.user.img.present? %>
-          <%= image_tag micropost.user.img.url, class: "profile_image_list"  %>
+          <%= image_tag micropost.user.img.url, class: 'profileImageMd'  %>
         <% else %>
-          <%= image_tag "default_image.png", width: "123px", height: "123px" %>
+          <%= image_tag 'default_image.png', class: 'profileImageMd' %>
         <% end %>
-        <%= link_to micropost.user.name, user_path(micropost.user) %> | posted_at <%= micropost.created_at %>
-      </div>
-      <div>
-        <p><%= micropost.content %></p>
-      </div>
-      <div>
-        <p>
-          <% if current_user == micropost.user %>
-            <%= link_to "削除", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
-        </p>
-      </div>  
-      <div>
+        <%= link_to micropost.user.name, user_path(micropost.user), class: 'name' %>
+        <p class='postedAt' ><%= Time.at(micropost.created_at).strftime('%Y-%m-%d %H時%M分') %></p>
+        <p class='content' ><%= micropost.content %></p>
+        <% if current_user == micropost.user %>
+          <%= link_to ' | 削除', micropost, method: :delete, data: { confirm: 'You sure?' }, class: 'delete' %>
+        <% end %>
         <% if current_user.favorite?(micropost) %>
           <%= form_with(model: current_user.favorites.find_by(micropost_id: micropost.id), local: true, method: :delete) do |f| %>
             <%= hidden_field_tag :favorite_id, micropost.id %>
-            <%= f.submit "♥", class: "btn btn-danger" %>
+            <%= f.button :type => 'submit', class: 'likeButton' do %>
+              <i class='fas fa-heart fa-lg'></i>
+            <% end %>
           <% end %>
         <% else %>
           <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
             <%= hidden_field_tag :favorite_id, micropost.id %>
-            <%= f.submit "♡", class: "btn btn-primary" %>
+            <%= f.button :type => 'submit', class: 'likeButton' do %>
+              <i class='far fa-heart fa-lg'></i>
+            <% end %>
           <% end %>
         <% end %>
+        <p class='likeCounts'><%= micropost.favorites.count %></p>
       </div>
     </li>
   <% end %>

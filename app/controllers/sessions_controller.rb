@@ -1,20 +1,18 @@
 class SessionsController < ApplicationController
   include ApplicationHelper
-  
+
   before_action :finish_record, only: [:destroy], if: :studying?
 
-  
-  def new
-  end
+  def new; end
 
   def create
     email = params[:session][:email].downcase
     password = params[:session][:password]
     if login(email, password)
-      flash[:success] = "ログインしました"
+      flash[:success] = 'ログインしました'
       redirect_to @user
     else
-      flash[:danger] = "ログインに失敗しました"
+      flash[:danger] = 'ログインに失敗しました'
       redirect_to root_url
     end
   end
@@ -24,17 +22,16 @@ class SessionsController < ApplicationController
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
-  
+
   private
-  
+
   def login(email, password)
     @user = User.find_by(email: email)
-    if @user && @user.authenticate(password)
+    if @user&.authenticate(password)
       session[:user_id] = @user.id
-      return true
+      true
     else
-      return false
+      false
     end
   end
-  
 end

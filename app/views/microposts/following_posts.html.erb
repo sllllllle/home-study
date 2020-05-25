@@ -1,25 +1,25 @@
-<div class="white-block">
-  <div class="large-block">
-    <div class="row">
-      <div class="col text-center">
+<div class='white-block'>
+  <div class='large-block'>
+    <div class='row'>
+      <div class='col text-center'>
         <h1>タイムライン</h1>
       </div>
     </div>
-    <div class="row">
-      <aside class="col-md-4">
+    <div class='row'>
+      <aside class='col-md-4'>
         <%= form_with(model: @micropost, local: true) do |f| %>
-          <div class="form-group">
-            <%= f.text_area :content, class: "form-control", rows: 5 %>
+          <div class='form-group'>
+            <%= f.text_area :content, class: 'form-control', rows: 5 %>
           </div>
-          <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+          <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
         <% end %>
       </aside>
-      <div class="col-md-8">
-        <ul class="nav nav-tabs nav-justified">
-        <li class="nav-item"><%= link_to "すべて", microposts_path %></li>
-        <li class="nav-item"><%= link_to "フォロー", following_posts_micropost_path %></li>
+      <div class='col-md-8'>
+        <ul class='nav nav-tabs nav-justified'>
+        <li class='nav-item'><%= link_to 'すべて', microposts_path %></li>
+        <li class='nav-item'><%= link_to 'フォロー', following_posts_micropost_path %></li>
       </ul>
-        <%= render "microposts/microposts", microposts: @microposts %>
+        <%= render 'microposts/microposts', microposts: @microposts %>
       </div>
     </div>
   </div>

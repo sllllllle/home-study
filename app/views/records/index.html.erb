@@ -6,39 +6,26 @@
     <% else %>
       <p>現在勉強している人はいません</p>
     <% end %>
-    <div class="scroll">
+    <div class="records scroll">
       <ul>
         <% @records.each do |record| %>
-        <li>
-          <div class="card">
-            <% if record.user.img.present? %>
-              <%= image_tag record.user.img.url, class: "profileImageLg"  %>
-            <% else %>
-              <%= image_tag "default_image.png", class: 'profileImageLg' %>
-            <% end %>
-            <div class="recordsUserInfo">
-              <p><%= link_to record.user.name, user_path(record.user) %></p>
-              <p>
-                <%= case record.user.gender
-                    when 1
-                      "男性"
-                    when 2
-                      "女性"
-                    else
-                      "その他"
-                    end %>
-                    | <%= record.user.age %>代
-              </p>
-            </div>
-            <div class='recordsLabel'>
-              <p><%= record.label %></p>
-            </div>
+          <li>
+            <div class="card">
+              <% if record.user.img.present? %>
+                <%= image_tag record.user.img.url, class: "profileImageMd"  %>
+              <% else %>
+                <%= image_tag "default_image.png", class: "profileImageMd" %>
+              <% end %>
+              <%= link_to record.user.name, user_path(record.user), class: "name" %>
+              <p class="content" ><%= record.label %></p>
               <% unless record.hide_support == true %>
-                <%= render "supports/support_button", record: record -%>
+                <div class="yell">
+                  <%= render "supports/support_button", record: record %>
+                  <%= support_counts(record) %>
+                </div>
               <% end %>
             </div>
-          </div>
-        </li>
+          </li>
         <% end %>
       </ul>
     </div>

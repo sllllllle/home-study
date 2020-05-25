@@ -5,8 +5,8 @@ class CreateSupports < ActiveRecord::Migration[5.2]
       t.references :record, foreign_key: true
 
       t.timestamps
-      
-      t.index [:user_id, :record_id], unique: true
+
+      t.index %i[user_id record_id], unique: true
     end
   end
 end

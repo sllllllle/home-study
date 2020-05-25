@@ -1,53 +1,54 @@
-<div class="white-block">
-  <div class="row">
-    <div class="col lg-block text-center">
-      <h1>ユーザー設定</h1>
-      <div>
-        <%= form_with(model: @user, local: true) do |f| %>
+<div class="main-wrapper">
+  <div class="longBlock">
+    <div class="settingForm">
+      <h3 class="title">ユーザー設定</h3>
+      <%= form_with(model: @user, local: true) do |f| %>
         <%= render 'layouts/error_messages', model: @user %>
-          <div>
-            <% if @user.img.present? %>
-              <%= image_tag @user.img.url, class: "profile_image_list"  %>
-            <% else %>
-              <%= image_tag "default_image.png", width: "123px", height: "123px" %>
-            <% end %>
-          </div>
-          <div>
-            <%= f.label :img, 'プロフィール画像変更' %>
-            <%= f.file_field :img, id: :book_img %>
-            <p><%= f.check_box :remove_img %>画像を削除する</p>
-          </div>
-          <div>
-            <%= f.label :name, 'ユーザー名' %>
-            <%= f.text_field :name %>
-          </div>
-          <div>
-            <%= f.label :email, 'メールアドレス' %>
-            <%= f.email_field :email %>
-          </div>
-          <div>
-            <%= f.select :gender, [['男', 1], ['女', 2], ['その他', 3]], { selected: 1 } %>
-          </div>
-          <div>
-            <%= f.label :age, '年代' %>
-            <%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %>
-          </div>
-          <div>
-            <%= f.check_box :hide_gender %>
-            <%= f.label :hide_gender, "性別を非公開にする" %>
-          </div>
-          <div>
-            <%= f.check_box :hide_age %>
-            <%= f.label :hide_age, "年代を非公開にする" %>
-          </div>
-          <div>
-            <%= f.check_box :hide_records %>
-            <%= f.label :hide_records, "勉強履歴を非公開にする" %>
-          </div>
-          <%= f.submit '更新' %>
-        <% end %>
-        <%= link_to "戻る", user_path(@user) %>
-      </div>
+        <table>
+          <tr>
+            <th><%= f.label :name, 'ユーザー名' %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, 'メールアドレス' %></th>
+            <td><%= f.email_field :email %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :gender, '性別' %></th>
+            <td><%= f.select :gender, [['男', 1], ['女', 2], ['その他', 3]], { selected: 1 } %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :age, '年代' %></th>
+            <td><%= f.select :age, ['10代', '20代', '30代', "40代", "50代", "60代", "70代", "80代", "90代" ] %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_gender, "性別を非公開" %></th>
+            <td><%= f.check_box :hide_gender %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_age, "年代を非公開" %></th>
+            <td><%= f.check_box :hide_age %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_records, "勉強履歴を非公開" %></th>
+            <td><%= f.check_box :hide_records %></td>
+          </tr>
+          <tr>
+            <th><% if @user.img.present? %>
+                  <%= image_tag @user.img.url, class: "editProfileImage"%>
+                <% else %>
+                  <%= image_tag "default_image.png", class: "editProfileImage" %>
+                <% end %></th>
+            <td><%= f.file_field :img, id: :book_img %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :remove_img, "画像を削除" %></th>
+            <td><%= f.check_box :remove_img %></td>
+          </tr>
+          <%= f.submit '更新', class: 'submit' %>
+        </table>
+      <% end %>
+      <%= link_to "戻る", user_path(@user), class: 'back' %>
     </div>
   </div>
 </div>

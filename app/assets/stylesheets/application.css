@@ -10,7 +10,6 @@
  /** files in this directory. Styles in this file should be added after the last require_* statement.*/
  /** It is generally better to create a new file per style scope.*/
  /***/
- /**= require_tree .*/
  /**= require_self*/
  
 
@@ -463,6 +462,12 @@ main
   left: 86%;
 }
 
+.followSwitch
+{
+  position: absolute;
+  top: 100%;
+  left: 25%;
+}
 /*---------------End of user/show---------------*/
 
 /*---------------Start of user/records---------------*/
@@ -694,6 +699,7 @@ main
   position: absolute;
   top: 70%;
   left: 42%;
+  margin-top: 10px;
 }
 
 /*---------------End of records/result---------------*/

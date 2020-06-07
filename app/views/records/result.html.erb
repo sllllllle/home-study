@@ -11,7 +11,8 @@
         <% end %>
         
         <% unless @record.hide_support == true %>
-          <p class="yellicon">&#x1f4e3;<%= support_counts(@record) %></p>
+          <!--<p class="yellicon">&#x1f4e3;<%= support_counts(@record) %></p>-->
+          <p class="yellicon"><i class="fas fa-thumbs-up fa-lg"></i><%= support_counts(@record) %></p>
         <% end %>
       </div>
       <%= link_to("ホーム", records_path, {class: "toHome"}) %>

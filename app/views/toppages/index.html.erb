@@ -3,13 +3,13 @@
   <div class='login-form form'>
     <h2>ログイン</h2>
     <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-      <div class='input_box'>
-        <%= f.email_field :email %>
+      <div class='input-box'>
         <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email %>
       </div>
-      <div class='input_box'>
-        <%= f.password_field :password %>
+      <div class='input-box'>
         <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password %>
       </div>
       <div class="submit">
         <%= f.submit 'ログイン' %>

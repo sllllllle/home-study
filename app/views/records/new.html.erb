@@ -1,27 +1,25 @@
-<div class="main-wrapper">
-  <div class="smallBlock">
-      <h2>勉強をはじめる</h2>
-      <div class="startStudy">
-        <%= form_with(model: @record, local: true) do |f| %>
-          <%= render 'layouts/error_messages', model: f.object %>
-          <div class="box">
-            <p class="recordLabel"><%= f.label :label, "学習の内容や意気込みなど（30文字以内）" %></p>
-            <%= f.text_area :label, class: 'textarea' %>
-          </div>
-          <div class="box">
-            <%= f.label :hide_support, "エールを表示しない" %>
-            <%= f.check_box :hide_support %>
-          </div>
-          <div class="box">
-            <%= f.label :null_timer, "時間を計測しない" %>
-            <%= f.check_box :null_timer %>
-          </div>
-          <div class="box">
-            <%= f.submit "開始", class: "recordSubmit" %>
-            <p>勉強は、画面下部から終了できます。</p>
-          </div>
-        <% end %>
-      </div>
+<div class="memo memo-sm"><span class='masking-tape'></span>
+  <h2 class="pagetitle">勉強をはじめる</h2>
+  <div class="study-new">
+    <div class="form">
+      <%= form_with(model: @record, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="input-box">
+          <%= f.label :label, "学習の内容や意気込みなど（30文字以内）" %>
+          <%= f.text_area :label %>
+        </div>
+        <div class="check-box">
+          <%= f.label :hide_support, "エールを表示しない" %>
+          <%= f.check_box :hide_support %>
+        </div>
+        <div class="check-box">
+          <%= f.label :null_timer, "時間を計測しない" %>
+          <%= f.check_box :null_timer %>
+        </div>
+        <div class="submit">
+          <%= f.submit "開始" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

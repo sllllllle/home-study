@@ -1,18 +1,20 @@
-<div class='main-wrapper'>
-  <div class='largeBlock'>
-    <h3 class='pagetitle'>タイムライン</h3>
-    <div class='postBox'>
-      <%= form_with(model: @micropost, local: true) do |f| %>
-        <%= f.text_area :content, class: 'form-control', rows: 5 %>
-        <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
-      <% end %>
-    </div>
-    <div class='timeline scroll'>
-      <ul class='nav nav-tabs nav-justified'>
-        <li class='nav-item'><%= link_to 'すべて', microposts_path %></li>
-        <li class='nav-item'><%= link_to 'フォロー', following_posts_micropost_path(@current_user) %></li>
-      </ul>
+<div class='memo memo-lg'><span class='masking-tape'></span>
+  <div class='post-box'>
+    <p class="guide">
+      好きなことを50字以内で発信できます!
+    </p>
+    <%= form_with(model: @micropost, local: true) do |f| %>
+      <%= f.text_area :content %>
+      <%= f.submit 'Tweet!', class: 'tweet-btn' %>
+    <% end %>
+  </div>
+  <div class='feed'>
+    <ul class='nav nav-tabs nav-justified'>
+      <li class='nav-item'><%= link_to 'すべて', microposts_path %></li>
+      <li class='nav-item'><%= link_to 'フォロー', following_posts_micropost_path(@current_user) %></li>
+    </ul>
+    <div class="microposts scroll">
       <%= render 'microposts/microposts', microposts: @microposts %>
     </div>
   </div>
-</div>  
+</div>

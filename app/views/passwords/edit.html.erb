@@ -1,25 +1,24 @@
-<div class="main-wrapper">
-  <div class="longBlock">
-    <div class="alterPassword">
-      <h2>パスワード変更</h2>
-        <%= form_with(model: @user, url: password_path, local: true) do |f| %>
-        <%= render 'layouts/error_messages', model: @user %>
-          <div class="inputBox">
-            <%= f.password_field :current_password, class: 'inputLine' %>
-            <%= f.label :current_password, '現在のパスワード', class: 'label' %>
-          </div>
-          <div class="inputBox">
-            <%= f.password_field :new_password, class: 'inputLine' %>
-            <%= f.label :new_password, '新しいパスワード', class: 'label' %>
-          </div>
-          <div class="inputBox">
-            <%= f.password_field :password_confirmation, class: 'inputLine' %>
-            <%= f.label :password_confirmation, '新しいパスワード（確認用）', class: 'label' %>
-          </div>
-          <%= f.submit '更新', class: "submit" %>
-        <% end %>
-        <%= link_to "戻る", user_path(@user), class: 'back' %>
+<div class='memo memo-sm'><span class='masking-tape'></span>
+  <h2 class='pagetitle'>パスワード変更</h2>
+  <div class="alter-password form">
+    <%= form_with(model: @user, url: password_path, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: @user %>
+      <div class="input-box">
+        <%= f.password_field :current_password %>
+        <%= f.label :current_password, '現在のパスワード' %>
       </div>
-    </div>
+      <div class="input-box">
+        <%= f.password_field :new_password %>
+        <%= f.label :new_password, '新しいパスワード' %>
+      </div>
+      <div class="input-box">
+        <%= f.password_field :password_confirmation %>
+        <%= f.label :password_confirmation, '新しいパスワード（確認用）' %>
+      </div>
+      <div class="buttons">
+        <%= f.submit '更新', class: "btn" %>
+        <%= link_to "戻る", user_path(@user), class: "btn" %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<% if current_user %>
+<% unless !current_user %>
   <% unless current_user == record.user %>
     <% if current_user.support?(record) %>
       <%= form_with(model: current_user.supports.find_by(record_id: record.id), local: true, method: :delete) do |f| %>
@@ -15,5 +15,6 @@
         <% end %>
       <% end %>
     <% end %>
+    <p class="support-counts"><%= support_counts(record) %></p>
   <% end %>
 <% end %>

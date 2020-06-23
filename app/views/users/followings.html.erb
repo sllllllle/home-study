@@ -1,33 +1,6 @@
-<div class="main-wrapper">
-  <div class="longBlock">
-    <div class="userslist">
-      <h2>フォロー一覧</h2>
-      <ul>
-        <% @followings.each do |user| %>
-          <li>
-              <div class="userCard">
-                <%= link_to user.name, user_path(user), class: "name" %>
-                <% if user.img.present? %>
-                  <%= image_tag user.img.url, class: "profileImageSm" %>
-                <% else %>
-                  <%= image_tag "default_image.png", class: "profileImageSm" %>
-                <% end %>
-                <% if current_user.following?(user) %>
-                  <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
-                    <%= hidden_field_tag :follow_id, user.id %>
-                    <%= f.submit "フォロー解除", class: 'btn btn-danger followBtn' %>
-                  <% end %>
-                <% else %>
-                  <%= form_with(model: current_user.relationships.build, local: true) do |f| %>
-                    <%= hidden_field_tag :follow_id, user.id %>
-                    <%= f.submit "フォロー", class: 'btn btn-primary followBtn' %>
-                  <% end %>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
+<div class='memo memo-md'><span class='masking-tape'></span>
+  <h2 class='pagetitle'>フォロー一覧</h2>
+  <div class="user-lists scroll">
+    <%= render "users/users2", users: @followings %>
   </div>
 </div>

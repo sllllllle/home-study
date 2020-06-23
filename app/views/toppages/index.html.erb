@@ -1,23 +1,20 @@
-
-<div class="main-wrapper">
-  <div class="introduction">
-    <h1>みんなと一緒に<br>勉強しましょう！</h1>
-  </div>
-  <div class="login-wrapper">
-    <div class="login-form">
-      <h2>ログイン</h2>
-      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-        <div class="inputBox">
-          <%= f.email_field :email, class: 'inputLine' %>
-          <%= f.label :email, 'メールアドレス', class: 'label' %>
-        </div>
-        <div class="inputBox">
-          <%= f.password_field :password, class: 'inputLine' %>
-          <%= f.label :password, 'パスワード', class: 'label' %>
-        </div>
-        <p><%= f.submit "ログイン", class: 'submit' %></p>
-      <% end %>
-      <%= link_to "簡単ログイン", easy_login_path, method: :post, class: 'simpleLogin' %>
-    </div>
+<h1 class='introduction'>みんなと一緒に<br>勉強しましょう！</h1>
+<div class='login_egg'>
+  <div class='login-form form'>
+    <h2>ログイン</h2>
+    <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+      <div class='input_box'>
+        <%= f.email_field :email %>
+        <%= f.label :email, 'メールアドレス' %>
+      </div>
+      <div class='input_box'>
+        <%= f.password_field :password %>
+        <%= f.label :password, 'パスワード' %>
+      </div>
+      <div class="submit">
+        <%= f.submit 'ログイン' %>
+      </div>
+    <% end %>
+    <%= link_to '簡単ログイン', easy_login_path, method: :post, class: 'easy-login' %>
   </div>
 </div>

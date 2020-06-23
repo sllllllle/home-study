@@ -1,13 +1,15 @@
-<% unless current_user == user %>
-  <% if current_user.following?(user) %>
-    <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
-      <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォロー解除", class: 'btn btn-danger followSwitch' %>
-    <% end %>
-  <% else %>
-    <%= form_with(model: current_user.relationships.build, local: true) do |f| %>
-      <%= hidden_field_tag :follow_id, user.id %>
-      <%= f.submit "フォロー", class: 'btn btn-primary followSwitch' %>
+<div class="follow-switch">
+  <% unless current_user == user %>
+    <% if current_user.following?(user) %>
+      <%= form_with(model: current_user.relationships.find_by(follow_id: user.id), local: true, method: :delete) do |f| %>
+        <%= hidden_field_tag :follow_id, user.id %>
+        <%= f.submit "フォロー解除", class: 'btn unfollow' %>
+      <% end %>
+    <% else %>
+      <%= form_with(model: current_user.relationships.build, local: true) do |f| %>
+        <%= hidden_field_tag :follow_id, user.id %>
+        <%= f.submit "フォロー", class: 'btn follow' %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>

@@ -14,6 +14,7 @@ class SupportsController < ApplicationController
   end
 
   def supporters
-    @supporters = Support.where(record_id: current_user.records.where(finished: false))
+    @record = current_user.unfinished_records.last if current_user
+    @supporters = @record.supporter
   end
 end

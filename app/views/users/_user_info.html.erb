@@ -1,11 +1,9 @@
 <div>
   <% if user.img.present? %>
-    <%= image_tag user.img.url, class: "profileImageLg" %>
+    <%= image_tag user.img.url, class: 'profile-image-lg' %>
   <% else %>
-    <%= image_tag "default_image.png", class: "profileImageLg" %>
+    <%= image_tag 'default_image.png', class: 'profile-image-lg' %>
   <% end %>
-</div>
-<div>
   <h3><%= user.name %></h3>
   <% if user.hide_gender == true %>
     <p>非公開 | 
@@ -17,11 +15,11 @@
   <% else %>
     <p><%= case user.gender 
           when 1
-            "男性"
+            '男性'
           when 2
-            "女性"
+            '女性'
           else
-            "その他"
+            'その他'
           end %> |  
     <% if user.hide_age == true %>
       非公開
@@ -29,15 +27,15 @@
       <%= user.age %>代
     <% end %></p>
   <% end %>
+  <div class='relationships'>
+    <a><%= @count_followings %><%= link_to 'フォロー中', followings_user_path(user) %></a>
+    <a><%= @count_followers %><%= link_to 'フォロワー', followers_user_path(user) %></a>
+    <%= render 'relationships/follow_button', user: @user %>
+  </div>
 </div>
-<%= render 'relationships/follow_button', user: @user %>
-<div class="relationships">
-  <%= link_to "フォロー", followings_user_path(user) %> <%= @count_followings %>人
-  <%= link_to "フォロワー", followers_user_path(user) %> <%= @count_followers %>人
-</div>
-<div class="settings">
+<div class='settings'>
   <% if current_user == user %>
-    <%= link_to "ユーザー設定", edit_user_path %>
-    <%= link_to "パスワード変更", edit_password_path %>
+    <%= link_to 'ユーザー設定', edit_user_path %>
+    <%= link_to 'パスワード変更', edit_password_path %>
   <% end %>
 </div>

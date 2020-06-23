@@ -1,22 +1,17 @@
 <div class="studying_banner">
   <% if record.user.img.present? %>
-    <%= image_tag record.user.img.url, class: "profileImageSm"  %>
+    <%= image_tag record.user.img.url, class: "profile-image-md"  %>
   <% else %>
-    <%= image_tag "default_image.png", class: 'profileImageSm' %>
+    <%= image_tag "default_image.png", class: 'profile-image-md' %>
   <% end %>
-  <div class="buttons">
+  <div class="study-menu">
     <% if record.stopped == false %>
-      <button><%= link_to "一時停止", stop_record_path(record) %></button>
+      <%= link_to "一時停止", stop_record_path(record), class: "btn" %>
     <% else %>
-      <button><%= link_to "再開", restart_record_path(record) %></button>
+      <%= link_to "再開", restart_record_path(record), class: "btn" %>
     <% end %>
-    <button><%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"} %></button>
+    <%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"}, class: "btn" %>
   </div>
-  <!--<div class="totalTime">-->
-  <!--  <% unless record.null_timer == true %>-->
-      <!--<p>経過時間: <%= Time.at(record.elapsed_time).strftime("%X") %> </p>-->
-  <!--  <% end %>-->
-  <!--</div>-->
   <div class="label">
     <p><%= record.label %></p>
   </div>

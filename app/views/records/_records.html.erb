@@ -1,24 +1,28 @@
 <ul>
   <% records.each do |record| %>
     <li>
-      <div class="card">
-        <% if record.user.img.present? %>
-          <%= image_tag record.user.img.url, class: "profileImageMd"  %>
-        <% else %>
-          <%= image_tag "default_image.png", class: "profileImageMd" %>
-        <% end %>
-        <%= link_to record.user.name, user_path(record.user), class: "name" %>
-        <p class="content" ><%= record.label %></p>
-        <% unless record.null_timer == true %>
-          <p class="time" ><%= Time.at(record.elapsed_time).strftime("%X") %> </p>
-        <% end %>
-        <p class="postedAt"><%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
-        <% unless record.hide_support == true %>
-            <div class="yell">
-              <i class="fas fa-thumbs-up"></i>
-              <%= support_counts(record) %>
-            </div>
-        <% end %>
+      <div class='card'>
+        <div class='user-bio'>
+          <% if record.user.img.present? %>
+            <%= image_tag record.user.img.url, class: "profile-image-md"  %>
+          <% else %>
+            <%= image_tag "default_image.png", class: "profile-image-md" %>
+          <% end %>
+          <%= link_to record.user.name, user_path(record.user), class: "name" %>
+        </div>
+        <div class="record-label">
+          <p><%= record.label %></p>
+        </div>
+        <div class="record-bio">
+          <p><%= Time.at(record.created_at).strftime("%Y-%m-%d") %> </p>
+          <% unless record.null_timer == true %>
+            <p><%= Time.at(record.elapsed_time).strftime("%H時%M分%S秒") %> </p>
+          <% end %>
+          <% unless record.hide_support == true %>
+            <i class="fas fa-thumbs-up fa-lg"></i>
+            <p class="support-counts"><%= support_counts(record) %></p>
+          <% end %>
+        </div>
       </div>
     </li>
   <% end %>

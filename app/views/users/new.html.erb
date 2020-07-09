@@ -1,0 +1,35 @@
+<div class='memo memo-md'><span class='masking-tape'></span>
+<h2 class='pagetitle'>会員登録</h2>
+  <div class='form'>
+    <%= form_with(model: @user, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      <div class='input-box'>
+        <%= f.text_field :name %>
+        <%= f.label :name, 'ユーザー名' %>
+      </div>
+      <div class='input-box'>
+        <%= f.email_field :email %>
+        <%= f.label :email, 'メールアドレス' %>
+      </div>
+      <div class='input-box'>
+        <%= f.password_field :password %>
+        <%= f.label :password, 'パスワード' %>
+      </div>
+      <div class='input-box'>
+        <%= f.password_field :password_confirmation %>
+        <%= f.label :password_confirmation, '確認用のパスワード' %>
+      </div>
+      <div class='select-box'>
+        <%= f.select :gender, { '男': 1, '女': 2, 'その他': 3 }, { selected: 1 } %>
+        <%= f.select :age, ['10代', '20代', '30代', '40代', '50代', '60代', '70代', '80代', '90代' ] %>
+      </div>
+      <div class='file-box'>
+        <%= f.label :img, 'プロフィール画像' %>
+        <%= f.file_field :img %>
+      </div>
+      <div class='submit'>
+        <%= f.submit '登録' %>
+      </div>
+    <% end %>
+  </div>
+</div>

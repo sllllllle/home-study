@@ -1,0 +1,60 @@
+<div class='memo memo-lg'><span class='masking-tape'></span>
+  <div class="studying-people">
+    <h1>勉強している人</h1>
+    <% if @records.any? %>
+      <p>仲間にエールを送りましょう!</p>
+    <% else %>
+      <p>現在勉強している人はいません</p>
+    <% end %>
+  </div>
+  <div class="studying-records scroll">
+    <ul>
+      <% @records.each do |record| %>
+        <li>
+          <div class="card">
+            <div class="user-bio">
+              <% if record.user.img.present? %>
+                <%= image_tag record.user.img.url, class: "profile-image-md"  %>
+              <% else %>
+                <%= image_tag "default_image.png", class: "profile-image-md" %>
+              <% end %>
+              <%= link_to record.user.name, user_path(record.user), class: "name" %>
+              <div class="user-attributes">
+                <% if record.user.hide_gender == true %>
+                  <p>非公開 | 
+                  <% if record.user.hide_age == true %>
+                    非公開
+                  <% else %>
+                    <%= record.user.age %>代
+                  <% end %></p>
+                <% else %>
+                  <p><%= case record.user.gender 
+                        when 1
+                          '男性'
+                        when 2
+                          '女性'
+                        else
+                          'その他'
+                        end %> |  
+                  <% if record.user.hide_age == true %>
+                    非公開
+                  <% else %>
+                    <%= record.user.age %>代
+                  <% end %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="record-label">
+              <%= record.label %>
+            </div>
+            <% unless record.hide_support == true %>
+              <div class="record-bio">
+                <%= render "supports/support_button", record: record %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

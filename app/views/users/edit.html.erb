@@ -1,0 +1,57 @@
+<div class='memo memo-md'><span class='masking-tape'></span>
+  <h2 class='pagetitle'>ユーザー設定</h2>
+    <div class='setting-form'>
+      <%= form_with(model: @user, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: @user %>
+        <table>
+          <tr>
+            <th><%= f.label :name, 'ユーザー名' %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, 'メールアドレス' %></th>
+            <td><%= f.email_field :email %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :gender, '性別' %></th>
+            <td><%= f.select :gender, [['男', 1], ['女', 2], ['その他', 3]], { selected: 1 } %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :age, '年代' %></th>
+            <td><%= f.select :age, ['10代', '20代', '30代', '40代', '50代', '60代', '70代', '80代', '90代' ] %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_gender, '性別を非公開' %></th>
+            <td><%= f.check_box :hide_gender %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_age, '年代を非公開' %></th>
+            <td><%= f.check_box :hide_age %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :hide_records, '勉強履歴を非公開' %></th>
+            <td><%= f.check_box :hide_records %></td>
+          </tr>
+          <tr>
+            <th>
+              <% if @user.img.present? %>
+                <%= image_tag @user.img.url, class: 'image'%>
+              <% else %>
+                <%= image_tag 'default_image.png', class: 'image' %>
+              <% end %>
+            </th>
+            <td><%= f.file_field :img, id: :book_img %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :remove_img, '画像を削除' %></th>
+            <td><%= f.check_box :remove_img %></td>
+          </tr>
+        </table>
+        <div class="buttons">
+          <%= f.submit '更新', class: "btn" %>
+          <%= link_to '戻る', user_path(@user), class: "btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

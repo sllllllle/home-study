@@ -1,0 +1,24 @@
+<div class="studying_banner">
+  <% if record.user.img.present? %>
+    <%= image_tag record.user.img.url, class: "profile-image-md"  %>
+  <% else %>
+    <%= image_tag "default_image.png", class: 'profile-image-md' %>
+  <% end %>
+  <div class="study-menu">
+    <% if record.stopped == false %>
+      <%= link_to "一時停止", stop_record_path(record), class: "btn" %>
+    <% else %>
+      <%= link_to "再開", restart_record_path(record), class: "btn" %>
+    <% end %>
+    <%= link_to "終了", finish_record_path(record), data: {confirm: "本当に終了しますか？"}, class: "btn" %>
+  </div>
+  <div class="label">
+    <p><%= record.label %></p>
+  </div>
+  <div class="yells">
+    <% unless record.hide_support == true %>
+      <i class="fas fa-thumbs-up fa-lg"></i>
+      <%= link_to support_counts(record), supporters_supports_path %></p>
+    <% end %>
+  </div>
+</div>

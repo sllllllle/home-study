@@ -1,0 +1,22 @@
+<div class="memo memo-sm"><span class='masking-tape'></span>
+  <h2 class="pagetitle">おつかれさまです！</h2>
+  <div class="result">
+    <div class="label">
+      <% if @record.label %>
+        <%= @record.label %>
+      <% else %>
+        ラベルなし
+      <% end %>
+    </div>
+    <% unless @record.null_timer == true %>
+      <p class="elapsed_time">経過時間：<%= Time.at(@record.elapsed_time).strftime('%X') %></p>
+    <% end %>
+    <div class="yell">
+      <% unless @record.hide_support == true %>
+        <i class="fas fa-thumbs-up fa-lg"></i>
+        <p class="support-counts"><%= support_counts(@record) %></p>
+      <% end %>
+    </div>
+    <%= link_to "ホーム", records_path %>
+  </div>
+</div>

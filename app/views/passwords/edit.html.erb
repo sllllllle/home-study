@@ -1,0 +1,24 @@
+<div class='memo memo-sm'><span class='masking-tape'></span>
+  <h2 class='pagetitle'>パスワード変更</h2>
+  <div class="alter-password form">
+    <%= form_with(model: @user, url: password_path, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: @user %>
+      <div class="input-box">
+        <%= f.password_field :current_password %>
+        <%= f.label :current_password, '現在のパスワード' %>
+      </div>
+      <div class="input-box">
+        <%= f.password_field :new_password %>
+        <%= f.label :new_password, '新しいパスワード' %>
+      </div>
+      <div class="input-box">
+        <%= f.password_field :password_confirmation %>
+        <%= f.label :password_confirmation, '新しいパスワード（確認用）' %>
+      </div>
+      <div class="buttons">
+        <%= f.submit '更新', class: "btn" %>
+        <%= link_to "戻る", user_path(@user), class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

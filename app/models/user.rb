@@ -5,7 +5,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   validates :gender, presence: true
   validates :age, presence: true
-  
+
   attr_accessor :current_password
   validates :new_password, presence: { if: :current_password }
 
@@ -30,9 +30,7 @@ class User < ApplicationRecord
 
   # ----------Start of relationships----------
   def follow(other_user)
-    unless self == other_user
-      relationships.find_or_create_by(follow_id: other_user.id)
-    end
+    relationships.find_or_create_by(follow_id: other_user.id) unless self == other_user
   end
 
   def unfollow(other_user)

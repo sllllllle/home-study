@@ -8,8 +8,7 @@ class RecordsController < ApplicationController
     @records = Record.where(finished: false)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @record = Record.new

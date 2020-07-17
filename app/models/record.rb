@@ -15,18 +15,17 @@ class Record < ApplicationRecord
     stop_time = Time.zone.now
     self.elapsed_time += stop_time.to_i - start_time.to_i
   end
-  
+
   def stop
-    self.add_elapsed_time
+    add_elapsed_time
     self.start_time = Time.zone.now
     self.stopped = true
-    self.save
+    save
   end
-  
+
   def restart
     self.start_time = Time.zone.now
     self.stopped = false
-    self.save
+    save
   end
-  
 end

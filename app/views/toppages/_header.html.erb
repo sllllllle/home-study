@@ -17,7 +17,7 @@
         <li><%= link_to '勉強している人', records_path, class: 'nav-link' %></li>
         <% if logged_in? %>
           <% if studying? %>
-            <li><%= link_to '勉強を終了する', finish_record_path(@record), class: 'nav-link' %></li>
+            <li><%= link_to '勉強を終了する', finish_record_path(@record), data: {confirm: "本当に終了しますか？"}, class: 'nav-link' %></li>
           <% else %>
             <li><%= link_to '勉強を始める', start_path, class: 'nav-link' %></li>
           <% end %>

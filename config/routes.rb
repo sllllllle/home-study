@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
 
+  #サイトの使い方ページ
+  get 'about', to: 'toppages#about'
+
   # ログイン機能
   get 'signup', to: 'users#new'
   get 'login', to: 'sessions#new'

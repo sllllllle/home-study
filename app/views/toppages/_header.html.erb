@@ -13,6 +13,7 @@
     </button>
     <div class='collapse navbar-collapse' id='nav-bar'>
       <ul class='navbar-nav'>
+        <li><%= link_to 'ABOUT', about_path, class: 'nav-link' %></li>
         <li><%= link_to '勉強している人', records_path, class: 'nav-link' %></li>
         <% if logged_in? %>
           <% if studying? %>

@@ -3,7 +3,5 @@ class ToppagesController < ApplicationController
     redirect_to @current_user if current_user
   end
 
-  def about
-    
-  end
+  def about; end
 end

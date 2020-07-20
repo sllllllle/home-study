@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
 
-  #サイトの使い方ページ
+  # サイトの使い方ページ
   get 'about', to: 'toppages#about'
 
   # ログイン機能

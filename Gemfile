@@ -52,8 +52,8 @@ group :development do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :production do
@@ -61,8 +61,8 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8.0'
   gem 'factory_bot_rails', '~> 5.1.1'
+  gem 'rspec-rails', '~> 3.8.0'
 end
 
 group :test do

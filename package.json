@@ -1,5 +1,7 @@
 {
   "name": "home-study",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react_ujs": "^2.6.1"
+  }
 }

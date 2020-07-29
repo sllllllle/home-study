@@ -2,9 +2,16 @@ FROM ruby:2.5.3
 
 RUN apt-get update -qq && \
     apt-get install -y build-essential \
-                       libpq-dev \
-                       nodejs \
-                       vim
+                       libpq-dev
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+
+RUN apt-get install -y \
+  nodejs \
+  inotify-tools
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN npm i -g yarn
+
 RUN apt-get update && apt-get install -y unzip && \
     CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/ && \

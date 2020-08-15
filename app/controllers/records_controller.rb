@@ -6,7 +6,6 @@ class RecordsController < ApplicationController
 
   def index
     @records = Record.where(finished: false)
-    @record = Record.new
   end
 
   def show; end

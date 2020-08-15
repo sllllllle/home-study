@@ -48,7 +48,7 @@
               <%= record.label %>
             </div>
             <% unless record.hide_support == true %>
-              <div class="record-bio">
+              <div id="yell-button-<%= record.id %>" class="record-bio">
                 <%= render "supports/support_button", record: record %>
               </div>
             <% end %>

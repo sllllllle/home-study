@@ -28,6 +28,7 @@ class MicropostsController < ApplicationController
   end
 
   def following_posts
+    @micropost = current_user.microposts.build
     @microposts = current_user.feed_microposts.order(id: :desc)
   end
 

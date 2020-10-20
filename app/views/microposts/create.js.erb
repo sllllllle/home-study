@@ -1,0 +1,17 @@
+// $('#js-table-comment').prepend("<%= j(render 'comment',{ comment: @comment }) %>");
+// $('#comment_body').val('')
+
+// $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
+
+
+// $('#js-microposts').html("<%= escape_javascript(render 'microposts/microposts', microposts: @microposts) %>");
+
+// $("#like-button-<%= @micropost.id %>").html("<%= j(render partial: 'microposts/favorite', locals: { micropost: @micropost }) %>");
+$('#js-microposts').prepend("<%= j(render 'microposts/microposts',{ micropost: @micropost }) %>");
+$("#js-microposts").html("<%= j(render partial: 'microposts/favorite', locals: { micropost: @micropost }) %>");
+
+$('#js-microposts').html('<%= escape_jacascript(render ')
+
+
+
+$('#micropost_content').val('');
